@@ -1,7 +1,7 @@
 /* The navigation menu */
 .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: #663333;
 }
 
 /* Navigation links */
@@ -41,8 +41,8 @@
 .subnav-content {
     display: none;
     position: absolute;
-    left: 0;
-    background-color: red;
+    left: 8px;
+    background-color: #ebe8d7;
     width: 100%;
     z-index: 1;
 }
@@ -50,7 +50,7 @@
 /* Style the subnav links */
 .subnav-content a {
     float: left;
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
