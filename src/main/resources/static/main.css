@@ -99,3 +99,23 @@ h1 {
 .subnav:hover .subnav-content {
     display: block;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    /*padding: 8px;*/
+    padding: 5px 8px 5px 8px;
+}
+
+tr:hover {
+    background-color: #ff44d5;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
