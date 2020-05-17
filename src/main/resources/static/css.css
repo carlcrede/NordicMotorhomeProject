@@ -11,12 +11,12 @@ body {
 }
 
 footer {
-    height:50px;
+    height:100px;
 }
 
 footer {
     margin-top: auto;
-    background-color: gray;
+    /*background-color: gray;*/
 }
 
 /* The navigation menu */
