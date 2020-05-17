@@ -69,8 +69,8 @@ footer img {
     display: none;
     position: absolute;
     left: 8px;
+    right: 8px;
     background-color: #ebe8d7;
-    width: 100%;
     z-index: 1;
 }
 
