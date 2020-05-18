@@ -10,7 +10,33 @@
 <div th:insert="header.html"></div>
 <body>
     <h1 align="center">Welcome to Nordic Motorhome Rentals!</h1>
-    <div th:insert="reservations"></div>
+<!--    <div th:insert="reservations"></div>-->
+
+    <form action="/login" method="post">
+        <div class="imgcontainer">
+            <img src="/images/Mountain.png" alt="Logo" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+
+
 </body>
 <footer th:insert="footer"></footer>
 </html>
