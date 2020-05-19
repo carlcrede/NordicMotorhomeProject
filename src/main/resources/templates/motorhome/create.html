@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add motorhome</title>
+</head>
+<body>
+<div class="container">
+    <h1>Add Motorhome</h1>
+    <form action="#" th:action="@{/motorhome/create}" th:object="${motorhome}" method="post">
+        <p>Model: <input type="text" th:field="*{model}" required/></p>
+        <p>Brand: <input type="text" th:field="*{brand}" required/></p>
+        <input type="submit" value="Add" class="btn btn-create"/>
+        <br/><br/>
+        <input type="button" onclick="window.location.href = '/motorhome';" value="Cancel" class="btn btn-del"/>
+    </form>
+</div>
+</body>
+</html>

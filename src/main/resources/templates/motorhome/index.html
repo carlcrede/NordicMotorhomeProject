@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Patter</title>
+</head>
+<body>
+<div class="container">
+    <h1>Motorhome Fleet</h1>
+    <p>All motorhomes currently in our fleet</p>
+    <p><a href="/motorhome/create" class="btn btn-create">Add new motorhome <i class="fa fa-plus-square-o"></i></a></p>
+    <table>
+        <thead>
+        <tr>
+            <!--        <th>Id</th>-->
+            <th>Brand</th>
+            <th>Model</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="motorhome: ${motorhomes}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <!--        <td th:text="${student.studentId}"></td>-->
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td>
+<!--                <a th:href="@{/details(id=${student.studentId})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> &lt;!&ndash; http://www.thymeleaf.org/doc/articles/standardurlsyntax.html &ndash;&gt;-->
+<!--                <a th:href="@{/edit(id=${student.studentId})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>-->
+<!--                <a th:href="@{/delete(id=${student.studentId})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
