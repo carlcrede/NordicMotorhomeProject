@@ -20,8 +20,12 @@ public class HomeController {
     LoginUC loginController = new LoginUC(new DataFacadeUsersImplementationI());
 
     @GetMapping("/")
-    public String index() {
-        return "/index";
+    public String index(HttpSession session) {
+        if (session.getAttribute("user") != null) {
+            return "/test";
+        } else {
+            return "/index";
+        }
     }
 
     @PostMapping("/login")
