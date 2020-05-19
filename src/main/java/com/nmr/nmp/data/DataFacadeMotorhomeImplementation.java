@@ -3,6 +3,7 @@ package com.nmr.nmp.data;
 import com.nmr.nmp.domain.IDataFacade;
 import com.nmr.nmp.domain.Motorhome;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class DataFacadeMotorhomeImplementation implements IDataFacade<Motorhome> {
@@ -15,8 +16,8 @@ public class DataFacadeMotorhomeImplementation implements IDataFacade<Motorhome>
     }
 
     @Override
-    public Map<Integer, Motorhome> read() {
-        return null;
+    public ArrayList<Motorhome> read() {
+        return motorhomeMapper.read();
     }
 
     @Override
