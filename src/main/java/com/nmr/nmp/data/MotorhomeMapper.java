@@ -1,5 +1,6 @@
 package com.nmr.nmp.data;
 
+import ch.qos.logback.core.db.dialect.DBUtil;
 import com.nmr.nmp.domain.Motorhome;
 
 import java.sql.Connection;
@@ -21,11 +22,13 @@ public class MotorhomeMapper {
             ps.setString(1, motorhome.getBrand());
             ps.setString(2, motorhome.getModel());
             ps.execute();
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
+
     }
 
     public ArrayList<Motorhome> read() {
