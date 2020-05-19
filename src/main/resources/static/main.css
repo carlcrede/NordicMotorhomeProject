@@ -120,7 +120,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-form {border: 3px solid #f1f1f1;}
+form {border: none !important;}
 
 input[type=text], input[type=password] {
     width: 100%;
@@ -153,7 +153,7 @@ button:hover {
 
 .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: -24px 0 -12px 0;
 }
 
 img.avatar {
