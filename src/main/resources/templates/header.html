@@ -5,6 +5,8 @@
             <img src="images/Mountain.png" alt="Logo">
         </a>
         <a href="#home">Home</a>
+
+        <div th:if="${session.user.role == 'owner' or session.user.role == 'sales'}">
         <div class="subnav">
             <button class="subnavbtn">Reservation <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
@@ -14,6 +16,7 @@
                 <a href="#link4">Link 4</a>
             </div>
         </div>
+    </div>
         <div class="subnav">
             <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">

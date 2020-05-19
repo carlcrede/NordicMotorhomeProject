@@ -19,8 +19,7 @@ public class UserMapper {
             if (rs.next()) {
                 String _username = rs.getString("username");
 //                String role = rs.getString("role");
-                User user = new User("owner", _username);
-                return user;
+                return new User("faggot", _username);
             }
         } catch (SQLException e) {
             e.printStackTrace();
