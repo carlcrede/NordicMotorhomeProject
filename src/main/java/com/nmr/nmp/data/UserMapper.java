@@ -12,15 +12,17 @@ public class UserMapper {
     ResultSet rs = null;
     public User login(String username, String password) {
         try (Connection connection = DBManager.getConnection()) {
-            String sql = "SELECT username FROM user WHERE username=? AND pass=?";
+            String sql = "SELECT * FROM user WHERE username=? AND pass=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String _username = rs.getString("username");
-//                String role = rs.getString("role");
-                return new User("mechanic", _username);
+                String firstName = rs.getString("firstname");
+                String lastName = rs.getString("lastname");
+                String role = rs.getString("role");
+                return new User(firstName, lastName, role, _username);
             }
         } catch (SQLException e) {
             e.printStackTrace();
