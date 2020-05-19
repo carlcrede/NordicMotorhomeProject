@@ -26,6 +26,7 @@ footer img {
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2.5em;
+    margin-top: 72px;
 }
 
 /* The navigation menu */
@@ -161,8 +162,11 @@ img.avatar {
     border-radius: 50%;
 }
 
+/* original container css værdi var padding: 16px */
 .container {
-    padding: 16px;
+    padding: 36px;
+    margin-left: 10.5%;
+    width: 75%;
 }
 
 span.psw {
