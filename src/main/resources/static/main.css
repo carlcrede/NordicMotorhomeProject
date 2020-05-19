@@ -31,7 +31,7 @@ h1 {
 /* The navigation menu */
 .navbar {
     overflow: hidden;
-    background-color: #d4cfc2;
+    background-color: #8c727b;
 }
 
 /* Navigation links */
@@ -120,7 +120,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-form {border: none !important;}
+form {border: none}
 
 input[type=text], input[type=password] {
     width: 100%;
