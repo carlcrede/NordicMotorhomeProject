@@ -6,7 +6,7 @@ import java.util.Map;
 public interface IDataFacade<T> {
     void create(T type);
     ArrayList<T> read();
-    T read(T type);
+    T read(int id);
     void update(T type);
-    void delete(T type);
+    void delete(int id);
 }

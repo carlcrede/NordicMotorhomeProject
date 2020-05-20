@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 
 @Controller
 public class MotorhomeController {
@@ -34,6 +36,41 @@ public class MotorhomeController {
         Motorhome motorhome = new Motorhome(model, brand);
         controller.create(motorhome);
         return "redirect:/motorhome";
+    }
+
+    @GetMapping("/motorhome/details")
+    public String details(@RequestParam("id") int id, Model model) {
+        model.addAttribute("motorhome", controller.read(id));
+        return "/motorhome/details";
+    }
+
+    @GetMapping("/motorhome/edit")
+    public String edit(@RequestParam("id") int id, Model model) {
+        model.addAttribute("motorhome", controller.read(id));
+        return "/motorhome/edit";
+    }
+
+    @PostMapping("/motorhome/edit")
+    public String update(HttpServletRequest request) {
+        String id  = request.getParameter("id");
+        String brand = request.getParameter("brand");
+        String model = request.getParameter("model");
+        Motorhome motorhome = new Motorhome(Integer.parseInt(id), brand, model);
+        controller.update(motorhome);
+        return "redirect:/motorhome";
+    }
+
+    @PostMapping("/motorhome/delete")
+    public String delete(HttpServletRequest request) {
+        String id = request.getParameter("id");
+        controller.delete(Integer.parseInt(id));
+        return "redirect:/motorhome";
+    }
+
+    @GetMapping("/motorhome/delete")
+    public String delete(@RequestParam("id") int id, Model model) {
+        model.addAttribute("motorhome", controller.read(id));
+        return "/motorhome/delete";
     }
 
 }

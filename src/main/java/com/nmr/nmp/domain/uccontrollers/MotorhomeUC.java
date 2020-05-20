@@ -15,7 +15,19 @@ public class MotorhomeUC {
         dataFacade.create(motorhome);
     }
 
+    public Motorhome read(int id) {
+        return dataFacade.read(id);
+    }
+
     public ArrayList<Motorhome> read() {
         return dataFacade.read();
+    }
+
+    public void update(Motorhome motorhome) {
+        dataFacade.update(motorhome);
+    }
+
+    public void delete(int id) {
+        dataFacade.delete(id);
     }
 }

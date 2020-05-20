@@ -29,9 +29,9 @@
             <td th:text="${motorhome.brand}"></td>
             <td th:text="${motorhome.model}"></td>
             <td>
-<!--                <a th:href="@{/details(id=${student.studentId})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> &lt;!&ndash; http://www.thymeleaf.org/doc/articles/standardurlsyntax.html &ndash;&gt;-->
-<!--                <a th:href="@{/edit(id=${student.studentId})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>-->
-<!--                <a th:href="@{/delete(id=${student.studentId})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>-->
+                <a th:href="@{/motorhome/details(id=${motorhome.id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> <!-- http://www.thymeleaf.org/doc/articles/standardurlsyntax.html -->
+                <a th:href="@{/motorhome/edit(id=${motorhome.id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>
+                <a th:href="@{/motorhome/delete(id=${motorhome.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>
             </td>
         </tr>
         </tbody>

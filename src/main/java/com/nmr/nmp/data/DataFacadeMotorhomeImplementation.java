@@ -21,17 +21,17 @@ public class DataFacadeMotorhomeImplementation implements IDataFacade<Motorhome>
     }
 
     @Override
-    public Motorhome read(Motorhome type) {
-        return null;
+    public Motorhome read(int id) {
+        return motorhomeMapper.read(id);
     }
 
     @Override
-    public void update(Motorhome type) {
-
+    public void update(Motorhome motorhome) {
+        motorhomeMapper.update(motorhome);
     }
 
     @Override
-    public void delete(Motorhome type) {
-
+    public void delete(int id) {
+        motorhomeMapper.delete(id);
     }
 }
