@@ -14,14 +14,16 @@ public class DBManager {
     private static String url;
     private static Connection connection = null;
 
-    public static Connection getConnection(){
-        if (connection != null) return connection;
+    public static Connection getConnection() {
+        //Todo: find a way to avoid creating new connection objects - ask teachers for advice
+//        if (connection != null) return connection;
         try (InputStream input = new FileInputStream("src/main/resources/application.properties")) {
             Properties properties = new Properties();
             properties.load(input);
             url = properties.getProperty("url");
             user = properties.getProperty("user");
             password = properties.getProperty("password");
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }

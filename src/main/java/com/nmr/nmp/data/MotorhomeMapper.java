@@ -13,6 +13,7 @@ public class MotorhomeMapper {
 
     PreparedStatement ps = null;
     ResultSet rs = null;
+    Connection connection = null;
 
     public void create(Motorhome motorhome) {
         try {
@@ -26,6 +27,7 @@ public class MotorhomeMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
+            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
 
@@ -46,6 +48,7 @@ public class MotorhomeMapper {
             }
         } catch (SQLException e) { e.getMessage(); }
         finally {
+            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
