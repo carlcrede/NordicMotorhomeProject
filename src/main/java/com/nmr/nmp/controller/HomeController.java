@@ -4,7 +4,6 @@ import com.nmr.nmp.data.DataFacadeUsersImplementationI;
 import com.nmr.nmp.domain.User;
 import com.nmr.nmp.domain.uccontrollers.LoginUC;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -22,9 +21,9 @@ public class HomeController {
     @GetMapping("/")
     public String index(HttpSession session) {
         if (session.getAttribute("user") != null) {
-            return "/test";
+            return "login/user";
         } else {
-            return "/index";
+            return "login/index";
         }
     }
 
@@ -32,13 +31,17 @@ public class HomeController {
     public String login(HttpServletRequest request) throws NoSuchAlgorithmException {
         String username = request.getParameter("uname");
         String pass = request.getParameter("psw");
+
+        // TODO: move to another class or method
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
         byte[] encodedHash = messageDigest.digest(pass.getBytes(StandardCharsets.UTF_8));
         String passString = bytesToHex(encodedHash);
+
         User user = loginController.login(username, passString);
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        return "/test";
+        session.setAttribute("role", user.getRole());
+        return "redirect:/";
     }
 
     private String bytesToHex(byte[] hash) {

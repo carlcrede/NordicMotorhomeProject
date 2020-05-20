@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/main.css">
@@ -8,10 +8,11 @@
 </head>
 <body>
 
-<div th:insert="header.html"></div>
+<div th:insert="navbar.html"></div>
 
 <div th:if="${session.user.role == 'owner'}">
     <h1>Welcome <span th:text="${session.user.firstName + ' ' + session.user.lastName }"></span>!</h1>
+    <div th:action="@{/motorhome}"></div>
 </div>
 <div th:if="${session.user.role == 'sales'}">
     <h1>Welcome <span th:text="${session.user.firstName + ' ' + session.user.lastName }"></span>!</h1>
