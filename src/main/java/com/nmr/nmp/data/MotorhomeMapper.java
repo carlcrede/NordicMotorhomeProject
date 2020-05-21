@@ -1,10 +1,8 @@
 package com.nmr.nmp.data;
 
-import ch.qos.logback.core.db.dialect.DBUtil;
-import com.nmr.nmp.domain.Motorhome;
+import com.nmr.nmp.domain.models.Motorhome;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class MotorhomeMapper {

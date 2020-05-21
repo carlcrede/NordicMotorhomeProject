@@ -1,6 +1,6 @@
 package com.nmr.nmp.data;
 
-import com.nmr.nmp.domain.User;
+import com.nmr.nmp.domain.models.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

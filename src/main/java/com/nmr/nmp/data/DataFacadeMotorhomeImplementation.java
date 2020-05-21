@@ -1,10 +1,9 @@
 package com.nmr.nmp.data;
 
 import com.nmr.nmp.domain.IDataFacade;
-import com.nmr.nmp.domain.Motorhome;
+import com.nmr.nmp.domain.models.Motorhome;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class DataFacadeMotorhomeImplementation implements IDataFacade<Motorhome> {
 

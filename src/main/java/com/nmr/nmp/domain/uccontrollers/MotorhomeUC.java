@@ -1,7 +1,7 @@
 package com.nmr.nmp.domain.uccontrollers;
 
 import com.nmr.nmp.domain.IDataFacade;
-import com.nmr.nmp.domain.Motorhome;
+import com.nmr.nmp.domain.models.Motorhome;
 
 import java.util.ArrayList;
 

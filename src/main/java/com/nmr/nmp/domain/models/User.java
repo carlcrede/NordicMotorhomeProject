@@ -1,4 +1,4 @@
-package com.nmr.nmp.domain;
+package com.nmr.nmp.domain.models;
 
 public class User {
 

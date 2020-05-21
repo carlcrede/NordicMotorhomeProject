@@ -1,7 +1,7 @@
 package com.nmr.nmp.domain.uccontrollers;
 
 import com.nmr.nmp.domain.ILoginFacade;
-import com.nmr.nmp.domain.User;
+import com.nmr.nmp.domain.models.User;
 
 public class LoginUC {
 

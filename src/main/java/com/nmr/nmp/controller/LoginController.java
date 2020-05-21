@@ -1,7 +1,7 @@
 package com.nmr.nmp.controller;
 
-import com.nmr.nmp.data.DataFacadeUsersImplementationI;
-import com.nmr.nmp.domain.User;
+import com.nmr.nmp.data.LoginFacadeUsersImplementationI;
+import com.nmr.nmp.domain.models.User;
 import com.nmr.nmp.domain.uccontrollers.LoginUC;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +14,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 @Controller
-public class HomeController {
+public class LoginController {
 
-    LoginUC loginController = new LoginUC(new DataFacadeUsersImplementationI());
+    LoginUC loginController = new LoginUC(new LoginFacadeUsersImplementationI());
 
     @GetMapping("/")
     public String index(HttpSession session) {

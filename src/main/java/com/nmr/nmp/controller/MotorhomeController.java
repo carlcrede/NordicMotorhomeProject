@@ -1,7 +1,7 @@
 package com.nmr.nmp.controller;
 
 import com.nmr.nmp.data.DataFacadeMotorhomeImplementation;
-import com.nmr.nmp.domain.Motorhome;
+import com.nmr.nmp.domain.models.Motorhome;
 import com.nmr.nmp.domain.uccontrollers.MotorhomeUC;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDate;
 
 @Controller
 public class MotorhomeController {
