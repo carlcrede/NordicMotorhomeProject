@@ -16,7 +16,7 @@ public class DBManager {
 
     public static Connection getConnection() {
         //Todo: find a way to avoid creating new connection objects - ask teachers for advice
-//        if (connection != null) return connection;
+        if (connection != null) return connection;
         try (InputStream input = new FileInputStream("src/main/resources/application.properties")) {
             Properties properties = new Properties();
             properties.load(input);

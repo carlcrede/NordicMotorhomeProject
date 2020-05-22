@@ -8,11 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserMapper {
-    Connection connection = null;
+
+    Connection connection = DBManager.getConnection();
     PreparedStatement ps = null;
     ResultSet rs = null;
+
     public User login(String username, String password) {
-        try (Connection connection = DBManager.getConnection()) {
+        try {
             String sql = "SELECT * FROM user WHERE username=? AND pass=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, username);
@@ -28,7 +30,7 @@ public class UserMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+//            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }

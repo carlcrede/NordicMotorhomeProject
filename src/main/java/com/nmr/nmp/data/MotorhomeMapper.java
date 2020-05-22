@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 public class MotorhomeMapper {
 
+    Connection connection = DBManager.getConnection();
     PreparedStatement ps = null;
     ResultSet rs = null;
-    Connection connection = null;
 
     public void create(Motorhome motorhome) {
+//        Connection connection = DBManager.getConnection();
         try {
-            connection = DBManager.getConnection();
+//            connection = DBManager.getConnection();
             String sql = "INSERT INTO products (type, brand, model) VALUES ('motorhome', ?, ?)";
             ps = connection.prepareStatement(sql);
             ps.setString(1, motorhome.getBrand());
@@ -23,7 +24,7 @@ public class MotorhomeMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+//            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
 
@@ -31,7 +32,7 @@ public class MotorhomeMapper {
 
     public Motorhome read(int motorhomeId) {
         try {
-            connection = DBManager.getConnection();
+//            connection = DBManager.getConnection();
             String sql = "SELECT id, brand, model FROM products WHERE id=?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, motorhomeId);
@@ -44,7 +45,7 @@ public class MotorhomeMapper {
             }
         } catch (SQLException e) { e.printStackTrace(); }
         finally {
-            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+//            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
         // TODO: exception handling needs to be implemented
@@ -55,7 +56,7 @@ public class MotorhomeMapper {
         ArrayList<Motorhome> motorhomes = new ArrayList<>();
         String sql = "SELECT id, brand, model FROM products WHERE type='motorhome'";
         try {
-            connection = DBManager.getConnection();
+//            connection = DBManager.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -68,16 +69,21 @@ public class MotorhomeMapper {
         } catch (SQLException e) { e.getMessage(); }
         finally {
             // TODO: maybe create class for handling closing of db objects
-            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+//            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
+        }
+        try {
+            System.out.println(connection.isClosed());
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return motorhomes;
     }
 
     public void update(Motorhome motorhome) {
         try {
-            connection = DBManager.getConnection();
+//            connection = DBManager.getConnection();
             String sql = "UPDATE products SET brand = ?, model = ? WHERE id = ?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, motorhome.getBrand());
@@ -86,21 +92,21 @@ public class MotorhomeMapper {
             ps.executeUpdate();
         } catch (SQLException e) { e.getMessage(); }
         finally {
-            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+//            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
     }
 
     public void delete(int id) {
         try {
-            connection = DBManager.getConnection();
+//            connection = DBManager.getConnection();
             String sql = "DELETE FROM products WHERE type='motorhome' and id = ?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) { e.getMessage(); }
         finally {
-            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
+//            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
     }
