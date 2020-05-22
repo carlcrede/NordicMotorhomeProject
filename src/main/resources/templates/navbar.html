@@ -5,7 +5,7 @@
             <img src="" th:src="@{/images/Mountain.png}" alt="Logo">
         </a>
         <a href="/">Home</a>
-
+        <!-- TODO: find evt. en anden måde til at vise ren "rigtige" navbar - spørg Tine / Kris -->
         <div th:if="${session.user.role == 'owner'}">
             <div class="subnav">
                 <button class="subnavbtn">Manage <i class="fa fa-caret-down"></i></button>
