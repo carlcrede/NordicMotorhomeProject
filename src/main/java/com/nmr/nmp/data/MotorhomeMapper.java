@@ -73,11 +73,6 @@ public class MotorhomeMapper {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
-        try {
-            System.out.println(connection.isClosed());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return motorhomes;
     }
 
