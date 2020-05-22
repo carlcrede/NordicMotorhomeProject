@@ -14,7 +14,7 @@ public class MotorhomeMapper {
     public void create(Motorhome motorhome) {
         try {
             connection = DBManager.getConnection();
-            String sql = "INSERT INTO motorhome (brand, model) VALUES (?, ?)";
+            String sql = "INSERT INTO products (type, brand, model) VALUES ('motorhome', ?, ?)";
             ps = connection.prepareStatement(sql);
             ps.setString(1, motorhome.getBrand());
             ps.setString(2, motorhome.getModel());
@@ -32,7 +32,7 @@ public class MotorhomeMapper {
     public Motorhome read(int motorhomeId) {
         try {
             connection = DBManager.getConnection();
-            String sql = "SELECT * FROM motorhome WHERE id=?";
+            String sql = "SELECT id, brand, model FROM products WHERE id=?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, motorhomeId);
             rs = ps.executeQuery();
@@ -53,14 +53,14 @@ public class MotorhomeMapper {
 
     public ArrayList<Motorhome> read() {
         ArrayList<Motorhome> motorhomes = new ArrayList<>();
-        String sql = "SELECT * FROM motorhome";
+        String sql = "SELECT id, brand, model FROM products WHERE type='motorhome'";
         try {
             connection = DBManager.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                String model = rs.getString("model");
                 String brand = rs.getString("brand");
+                String model = rs.getString("model");
                 int id = rs.getInt("id");
                 Motorhome motorhome = new Motorhome(id, model, brand);
                 motorhomes.add(motorhome);
@@ -78,7 +78,7 @@ public class MotorhomeMapper {
     public void update(Motorhome motorhome) {
         try {
             connection = DBManager.getConnection();
-            String sql = "UPDATE motorhome SET brand = ?, model = ? WHERE id = ?";
+            String sql = "UPDATE products SET brand = ?, model = ? WHERE id = ?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, motorhome.getBrand());
             ps.setString(2, motorhome.getModel());
@@ -94,7 +94,7 @@ public class MotorhomeMapper {
     public void delete(int id) {
         try {
             connection = DBManager.getConnection();
-            String sql = "DELETE FROM motorhome WHERE id = ?";
+            String sql = "DELETE FROM products WHERE type='motorhome' and id = ?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
