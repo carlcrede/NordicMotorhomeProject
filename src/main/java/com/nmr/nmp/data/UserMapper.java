@@ -15,7 +15,7 @@ public class UserMapper {
 
     public User login(String username, String password) {
         try {
-            String sql = "SELECT * FROM user WHERE username=? AND pass=?";
+            String sql = "SELECT * FROM users WHERE username=? AND pass=?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, password);
