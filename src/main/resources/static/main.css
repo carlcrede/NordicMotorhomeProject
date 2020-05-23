@@ -32,7 +32,7 @@ h1 {
 /* The navigation menu */
 .navbar {
     overflow: hidden;
-    background-color: #8c727b;
+    background-color: #663333;
 }
 
 /* Navigation links */
@@ -113,12 +113,16 @@ td, th {
     padding: 5px 8px 5px 8px;
 }
 
-tr:hover {
-    background-color: #ff44d5;
+tbody tr:hover {
+    box-shadow: 4px 4px 4px -3px rgba(0, 0, 0, 0.5) inset;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: aliceblue;
+}
+
+tr:nth-child(odd) {
+    background-color: aliceblue;
 }
 
 form {border: none}
@@ -131,6 +135,20 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+anm_btn{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 
 button {
     background-color: #4CAF50;
