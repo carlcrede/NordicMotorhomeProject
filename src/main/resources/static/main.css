@@ -77,8 +77,8 @@ h1 {
 .subnav-content {
     display: none;
     position: absolute;
-    left: 8px;
-    right: 8px;
+    /*left: 8px;*/
+    /*right: 8px;*/
     background-color: #ebe8d7;
     z-index: 1;
 }

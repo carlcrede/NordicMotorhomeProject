@@ -8,8 +8,9 @@
 </head>
 <body>
     <div th:insert="navbar"></div>
+    <div class="container">
     <h1>Welcome <span th:text="${session.user.firstName + ' ' + session.user.lastName }"></span>!</h1>
-
+    </div>
 </body>
 <footer th:insert="footer"></footer>
 </html>

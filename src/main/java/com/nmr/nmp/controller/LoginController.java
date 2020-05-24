@@ -27,6 +27,12 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "login/index";
+    }
+
     @PostMapping("/login")
     public String login(HttpServletRequest request) throws NoSuchAlgorithmException {
         String username = request.getParameter("uname");
