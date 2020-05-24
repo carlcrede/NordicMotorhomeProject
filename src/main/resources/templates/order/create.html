@@ -11,14 +11,14 @@
 <div class="container">
     <h1>New order</h1>
     <form action="#" th:action="@{/order/create}" th:object="${order}" method="post">
-        <p>First name: <input type="text" th:field="${order.customer.firstname}" required/></p>
-        <p>Last name: <input type="text" th:field="${order.customer.lastname}" required/></p>
-        <p>Phone: <input type="text" th:field="${order.customer.phone}" required/></p>
-        <p>Email: <input type="text" th:field="${order.customer.email}" required/></p>
-        <p>Order date: <input type="text" th:field="${order.orderDate}" required/></p>
-        <p>Start date: <input type="text" th:field="${order.startDate}" required/></p>
-        <p>Return date: <input type="text" th:field="${order.returnDate}" required/></p>
-        <p>Status: <input type="text" th:field="${order.status}" required/></p>
+        <p>First name: <input type="text" th:field="*{customer.firstname}" required/></p>
+        <p>Last name: <input type="text" th:field="*{customer.lastname}" required/></p>
+        <p>Phone: <input type="text" th:field="*{customer.phone}" required/></p>
+        <p>Email: <input type="text" th:field="*{customer.email}" required/></p>
+        <p>Order date: <input type="text" th:field="*{orderDate}" required/></p>
+        <p>Start date: <input type="text" th:field="*{startDate}" required/></p>
+        <p>Return date: <input type="text" th:field="*{returnDate}" required/></p>
+        <p>Status: <input type="text" th:field="*{status}" required/></p>
 
         <input type="submit" value="Add" class="btn btn-create"/>
         <br/><br/>

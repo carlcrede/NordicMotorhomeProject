@@ -29,15 +29,15 @@ public class OrderController {
     }
 
     @PostMapping("/order/create")
-    public String create(HttpServletRequest request, Model model) {
-        String firstname = request.getParameter("order.getCustomer().get");
-        String lastname = request.getParameter("order.customer.lastname");
-        String phone = request.getParameter("order.customer.phone");
-        String email = request.getParameter("order.customer.email");
-        String orderDate = request.getParameter("order.orderDate");
-        String startDate = request.getParameter("order.startDate");
-        String returnDate = request.getParameter("order.returnDate");
-        String status = request.getParameter("order.status");
+    public String create(HttpServletRequest request) {
+        String firstname = request.getParameter("customer.firstname");
+        String lastname = request.getParameter("customer.lastname");
+        String phone = request.getParameter("customer.phone");
+        String email = request.getParameter("customer.email");
+        String orderDate = request.getParameter("orderDate");
+        String startDate = request.getParameter("startDate");
+        String returnDate = request.getParameter("returnDate");
+        String status = request.getParameter("status");
 
         Customer customer = new Customer(firstname, lastname, phone, email);
         Order order = new Order(orderDate, startDate, returnDate, status, customer);
