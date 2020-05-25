@@ -4,26 +4,43 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>New order</title>
+    <title>Orders</title>
 </head>
 <body>
-<div th:insert="navbar"></div>
+<div th:insert="navbar.html"></div>
 <div class="container">
-    <h1>New order</h1>
-    <form action="#" th:action="@{/order/create}" th:object="${order}" method="post">
-        <p>First name: <input type="text" th:field="*{customer.firstname}" required/></p>
-        <p>Last name: <input type="text" th:field="*{customer.lastname}" required/></p>
-        <p>Phone: <input type="text" th:field="*{customer.phone}" required/></p>
-        <p>Email: <input type="text" th:field="*{customer.email}" required/></p>
-        <p>Order date: <input type="text" th:field="*{orderDate}" required/></p>
-        <p>Start date: <input type="text" th:field="*{startDate}" required/></p>
-        <p>Return date: <input type="text" th:field="*{returnDate}" required/></p>
-        <p>Status: <input type="text" th:field="*{status}" required/></p>
+    <h1>All customers</h1>
 
-        <input type="submit" value="Add" class="btn btn-create"/>
-        <br/><br/>
-        <input type="button" onclick="window.location.href = '/order';" value="Cancel" class="btn btn-del"/>
-    </form>
+    <p>All customers in the system</p>
+    <anm_btn><a href="/order/createCustomer" class="btn btn-create" style="color: white">Add new customer <i class="fa fa-plus-square-o"></i></a></anm_btn>
+    <table>
+        <thead>
+        <tr>
+            <th>Customer Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer: ${customers}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.firstname}"></td>
+            <td th:text="${customer.lastname}"></td>
+            <td th:text="${customer.phone}"></td>
+            <td th:text="${customer.email}"></td>
+            <td>
+                                <a th:href="@{/order/createOrder(id=${customer.id})}" class="btn btn-detail">Vælg <i class="fa fa-search-plus"></i></a> <!-- http://www.thymeleaf.org/doc/articles/standardurlsyntax.html -->
+                <!--                <a th:href="@{/motorhome/edit(id=${motorhome.id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>-->
+                <!--                <a th:href="@{/motorhome/delete(id=${motorhome.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
+<footer th:insert="footer"></footer>
 </html>

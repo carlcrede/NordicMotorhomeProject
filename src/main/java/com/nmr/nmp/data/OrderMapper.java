@@ -15,22 +15,23 @@ public class OrderMapper {
 
     public void create(Order order) {
         try {
-            String sql_cust = "INSERT INTO customers (firstname, lastname, phone, email)" +
-                    "VALUES (?, ?, ?, ?)";
-            ps = connection.prepareStatement(sql_cust);
-            ps.setString(1, order.getCustomer().getFirstname());
-            ps.setString(2, order.getCustomer().getLastname());
-            ps.setString(3, order.getCustomer().getPhone());
-            ps.setString(4, order.getCustomer().getEmail());
-            ps.execute();
+//            String sql_cust = "INSERT INTO customers (firstname, lastname, phone, email)" +
+//                    "VALUES (?, ?, ?, ?)";
+//            ps = connection.prepareStatement(sql_cust);
+//            ps.setString(1, order.getCustomer().getFirstname());
+//            ps.setString(2, order.getCustomer().getLastname());
+//            ps.setString(3, order.getCustomer().getPhone());
+//            ps.setString(4, order.getCustomer().getEmail());
+//            ps.execute();
 
             String sql = "INSERT INTO orders (customer_id, orderDate, startDate, returnDate, orderStatus)" +
-                    "VALUES (last_insert_id(), ?, ?, ?, ?); ";
+                    "VALUES (?, ?, ?, ?, ?); ";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, order.getOrderDate());
-            ps.setString(2, order.getStartDate());
-            ps.setString(3, order.getReturnDate());
-            ps.setString(4, order.getStatus());
+            ps.setInt(1, order.getCustomerId());
+            ps.setString(2, order.getOrderDate());
+            ps.setString(3, order.getStartDate());
+            ps.setString(4, order.getReturnDate());
+            ps.setString(5, order.getStatus());
             ps.execute();
 
         } catch (SQLException e) { e.printStackTrace(); }
