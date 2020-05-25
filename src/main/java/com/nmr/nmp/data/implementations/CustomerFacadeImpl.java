@@ -1,8 +1,8 @@
-package com.nmr.nmp.data;
+package com.nmr.nmp.data.implementations;
 
+import com.nmr.nmp.data.mappers.CustomerMapper;
 import com.nmr.nmp.domain.IDataFacade;
 import com.nmr.nmp.domain.models.Customer;
-import com.nmr.nmp.domain.models.Order;
 
 import java.util.ArrayList;
 

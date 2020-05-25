@@ -1,9 +1,10 @@
-package com.nmr.nmp.data;
+package com.nmr.nmp.data.implementations;
 
+import com.nmr.nmp.data.mappers.UserMapper;
 import com.nmr.nmp.domain.ILoginFacade;
 import com.nmr.nmp.domain.models.User;
 
-public class LoginFacadeUsersImplementationI implements ILoginFacade {
+public class LoginFacadeImpl implements ILoginFacade {
 
     private UserMapper userMapper = new UserMapper();
 

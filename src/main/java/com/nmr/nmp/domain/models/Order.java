@@ -1,21 +1,32 @@
 package com.nmr.nmp.domain.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class Order {
-    private ArrayList<OrderLine> orderLines;
-    private Customer customer;
+
     private int id;
     private int customerId;
+    private Customer customer;
     private String startDate, returnDate, status;
     private LocalDateTime orderDate;
 
-
     public Order(){
+    }
 
+    public Order(int orderId, int customerId, LocalDateTime orderDate, String startDate, String returnDate, String status) {
+        this.id = orderId;
+        this.customerId = customerId;
+        this.orderDate = orderDate;
+        this.startDate = startDate;
+        this.returnDate = returnDate;
+        this.status = status;
+    }
+
+    public Order(int customerId, String startDate, String returnDate, String status){
+        this.customerId = customerId;
+        this.startDate = startDate;
+        this.returnDate = returnDate;
+        this.status = status;
     }
 
     public Order(int customerId) {
@@ -28,14 +39,6 @@ public class Order {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
-    }
-
-    public ArrayList<OrderLine> getOrderLines() {
-        return orderLines;
-    }
-
-    public void setOrderLines(ArrayList<OrderLine> orderLines) {
-        this.orderLines = orderLines;
     }
 
     public Customer getCustomer() {
@@ -86,27 +89,4 @@ public class Order {
         this.id = id;
     }
 
-    public Order(int orderId, int customerId, LocalDateTime orderDate, String startDate, String returnDate, String status) {
-        this.id = orderId;
-        this.customerId = customerId;
-        this.orderDate = orderDate;
-        this.startDate = startDate;
-        this.returnDate = returnDate;
-        this.status = status;
-    }
-
-    public Order(LocalDateTime orderDate, String startDate, String returnDate, String status, Customer customer) {
-        this.orderDate = orderDate;
-        this.startDate = startDate;
-        this.returnDate = returnDate;
-        this.status = status;
-        this.customer = customer;
-    }
-
-    public Order(int customerId, String startDate, String returnDate, String status){
-        this.customerId = customerId;
-        this.startDate = startDate;
-        this.returnDate = returnDate;
-        this.status = status;
-    }
 }

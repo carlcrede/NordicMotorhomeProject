@@ -1,8 +1,8 @@
 package com.nmr.nmp.controller;
 
-import com.nmr.nmp.data.CustomerFacadeImpl;
-import com.nmr.nmp.data.DataFacadeMotorhomeImplementation;
-import com.nmr.nmp.data.OrderFacadeImpl;
+import com.nmr.nmp.data.implementations.CustomerFacadeImpl;
+import com.nmr.nmp.data.implementations.MotorhomeFacadeImpl;
+import com.nmr.nmp.data.implementations.OrderFacadeImpl;
 import com.nmr.nmp.domain.models.Customer;
 import com.nmr.nmp.domain.models.Order;
 import com.nmr.nmp.domain.models.OrderLine;
@@ -23,7 +23,7 @@ public class OrderController {
 
     OrderUC orderController = new OrderUC(new OrderFacadeImpl());
     CustomerUC customerController = new CustomerUC(new CustomerFacadeImpl());
-    MotorhomeUC motorhomeController = new MotorhomeUC(new DataFacadeMotorhomeImplementation());
+    MotorhomeUC motorhomeController = new MotorhomeUC(new MotorhomeFacadeImpl());
 
     @GetMapping("/order")
     public String index(Model model) {
