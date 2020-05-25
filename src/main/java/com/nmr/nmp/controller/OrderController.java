@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 @Controller
 public class OrderController {
@@ -47,7 +48,9 @@ public class OrderController {
         String email = request.getParameter("email");
         Customer customer = new Customer(firstname, lastname, phone, email);
         customerController.create(customer);
-        return "redirect:/order/create";
+        ArrayList<Customer> customers = customerController.read();
+        int customerId = customers.get(customers.size() - 1).getId();
+        return "redirect:/order/createOrder" + "?id=" + customerId;
     }
 
     @GetMapping("/order/createOrder")
