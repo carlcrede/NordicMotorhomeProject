@@ -1,11 +1,12 @@
-package com.nmr.nmp.data;
+package com.nmr.nmp.data.implementations;
 
+import com.nmr.nmp.data.mappers.MotorhomeMapper;
 import com.nmr.nmp.domain.IDataFacade;
 import com.nmr.nmp.domain.models.Motorhome;
 
 import java.util.ArrayList;
 
-public class DataFacadeMotorhomeImplementation implements IDataFacade<Motorhome> {
+public class MotorhomeFacadeImpl implements IDataFacade<Motorhome> {
 
     MotorhomeMapper motorhomeMapper = new MotorhomeMapper();
 

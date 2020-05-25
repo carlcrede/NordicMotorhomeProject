@@ -1,8 +1,8 @@
 package com.nmr.nmp.domain.models;
 
 public class Customer {
-    private String firstname, lastname, email, phone;
     private int id;
+    private String firstname, lastname, email, phone;
 
     public Customer() {
 

@@ -1,5 +1,6 @@
-package com.nmr.nmp.data;
+package com.nmr.nmp.data.mappers;
 
+import com.nmr.nmp.data.DBManager;
 import com.nmr.nmp.domain.models.User;
 
 import java.sql.Connection;

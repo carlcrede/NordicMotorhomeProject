@@ -1,5 +1,6 @@
-package com.nmr.nmp.data;
+package com.nmr.nmp.data.mappers;
 
+import com.nmr.nmp.data.DBManager;
 import com.nmr.nmp.domain.models.Customer;
 import com.nmr.nmp.domain.models.Order;
 import com.nmr.nmp.domain.models.OrderLine;
@@ -63,7 +64,6 @@ public class OrderMapper {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                // order data
                 int orderId = rs.getInt("order_id");
                 int customerId = rs.getInt("customer_id");
                 Timestamp _orderDate = rs.getTimestamp("orderDate");
@@ -74,8 +74,6 @@ public class OrderMapper {
 
                 Order order = new Order(orderId, customerId, orderDate, startDate, returnDate, status);
                 orders.add(order);
-                // Orderline data
-                //ArrayList<OrderLine> orderLines = loadOrderLines(rs);
             }
 
         } catch (SQLException e) {
@@ -87,17 +85,10 @@ public class OrderMapper {
         return orders;
     }
 
-    public ArrayList<OrderLine> loadOrderLines (ResultSet rs) throws SQLException {
-        ArrayList<OrderLine> orderLines = new ArrayList<>();
-        return  null;
+    public void update(Order order) {
     }
 
-//    public Customer loadCustomer(ResultSet rs) throws SQLException {
-//        int customerId = rs.getInt("customers.customer_id");
-//        String firstname = rs.getString("firstname");
-//        String lastname = rs.getString("lastname");
-//        String phone = rs.getString("phone");
-//        String email = rs.getString("email");
-//        return new Customer(customerId, firstname, lastname, phone, email);
-//    }
+    public void delete(int id) {
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.nmr.nmp.controller;
 
-import com.nmr.nmp.data.DataFacadeMotorhomeImplementation;
+import com.nmr.nmp.data.implementations.MotorhomeFacadeImpl;
 import com.nmr.nmp.domain.models.Motorhome;
 import com.nmr.nmp.domain.uccontrollers.MotorhomeUC;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MotorhomeController {
 
-    MotorhomeUC controller = new MotorhomeUC(new DataFacadeMotorhomeImplementation());
+    MotorhomeUC controller = new MotorhomeUC(new MotorhomeFacadeImpl());
 
     @GetMapping("/motorhome")
     public String index(Model model) {
