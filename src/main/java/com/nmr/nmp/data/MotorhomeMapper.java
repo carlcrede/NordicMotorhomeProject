@@ -47,6 +47,8 @@ public class MotorhomeMapper {
         finally {
 //            if (connection != null) { try { connection.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
+            if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
+
         }
         // TODO: exception handling needs to be implemented
         return new Motorhome();

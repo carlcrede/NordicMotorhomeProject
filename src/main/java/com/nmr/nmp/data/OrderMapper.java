@@ -49,6 +49,8 @@ public class OrderMapper {
         } catch (SQLException e) { e.printStackTrace(); }
         finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
+            if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
+
         }
         return new Order();
     }

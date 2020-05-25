@@ -162,7 +162,11 @@ cncl_btn{
     cursor: pointer;
 }
 
+.desc {
+    display: none;
+}
 
+​,
 button {
     background-color: #4CAF50;
     color: white;
