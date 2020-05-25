@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Controller
@@ -62,11 +63,10 @@ public class OrderController {
     @PostMapping("/order/createOrder")
     public String createOrder(HttpServletRequest request){
         String customerId = request.getParameter("customerId");
-        String orderDate = request.getParameter("orderDate");
         String startDate = request.getParameter("startDate");
         String returnDate = request.getParameter("returnDate");
         String status = request.getParameter("status");
-        Order order = new Order(Integer.parseInt(customerId), orderDate, startDate, returnDate, status);
+        Order order = new Order(Integer.parseInt(customerId), startDate, returnDate, status);
         controller.create(order);
         return "redirect:/order";
     }

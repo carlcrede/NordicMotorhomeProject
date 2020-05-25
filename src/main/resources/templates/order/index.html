@@ -28,7 +28,7 @@
             <!--/*@thymesVar id="studentId" type=""*/-->
             <td th:text="${order.id}"></td>
             <td th:text="${order.customerId}"></td>
-            <td th:text="${order.orderDate}"></td>
+            <td th:text="${#temporals.format(order.orderDate, 'dd-MM-yyyy HH:mm:ss')}"></td>
             <td th:text="${order.status}"></td>
             <td>
 <!--                <a th:href="@{/motorhome/details(id=${motorhome.id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> &lt;!&ndash; http://www.thymeleaf.org/doc/articles/standardurlsyntax.html &ndash;&gt;-->

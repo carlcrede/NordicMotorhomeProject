@@ -1,5 +1,8 @@
 package com.nmr.nmp.domain.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Order {
@@ -7,7 +10,8 @@ public class Order {
     private Customer customer;
     private int id;
     private int customerId;
-    private String orderDate, startDate, returnDate, status;
+    private String startDate, returnDate, status;
+    private LocalDateTime orderDate;
 
 
     public Order(){
@@ -42,11 +46,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public String getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -82,7 +86,7 @@ public class Order {
         this.id = id;
     }
 
-    public Order(int orderId, int customerId, String orderDate, String startDate, String returnDate, String status) {
+    public Order(int orderId, int customerId, LocalDateTime orderDate, String startDate, String returnDate, String status) {
         this.id = orderId;
         this.customerId = customerId;
         this.orderDate = orderDate;
@@ -91,7 +95,7 @@ public class Order {
         this.status = status;
     }
 
-    public Order(String orderDate, String startDate, String returnDate, String status, Customer customer) {
+    public Order(LocalDateTime orderDate, String startDate, String returnDate, String status, Customer customer) {
         this.orderDate = orderDate;
         this.startDate = startDate;
         this.returnDate = returnDate;
@@ -99,9 +103,8 @@ public class Order {
         this.customer = customer;
     }
 
-    public Order(int customerId, String orderDate, String startDate, String returnDate, String status){
+    public Order(int customerId, String startDate, String returnDate, String status){
         this.customerId = customerId;
-        this.orderDate = orderDate;
         this.startDate = startDate;
         this.returnDate = returnDate;
         this.status = status;

@@ -12,7 +12,6 @@
     <h1>New order</h1>
     <form action="#" th:action="@{/order/createOrder}" th:object="${order}" method="post">
         <input type="hidden" th:field="${order.customerId}"/>
-        <p>Order date: <input type="text" th:field="*{orderDate}" required/></p>
         <p>Start date: <input type="text" th:field="*{startDate}" required/></p>
         <p>Return date: <input type="text" th:field="*{returnDate}" required/></p>
         <p>Status: <input type="text" th:field="*{status}" required/></p>
