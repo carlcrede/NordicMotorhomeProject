@@ -90,6 +90,12 @@ public class OrderMapper {
         return  null;
     }
 
+    public void update(Order order) {
+    }
+
+    public void delete(int id) {
+    }
+
 //    public Customer loadCustomer(ResultSet rs) throws SQLException {
 //        int customerId = rs.getInt("customers.customer_id");
 //        String firstname = rs.getString("firstname");
