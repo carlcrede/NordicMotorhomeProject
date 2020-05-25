@@ -9,9 +9,8 @@
 <body>
 <div th:insert="navbar.html"></div>
 <div class="container">
-    <h1>All customers</h1>
-
-    <p>All customers in the system</p>
+    <h1>All customers in the system</h1>
+    <p>Choose customer for new order</p>
     <anm_btn><a href="/order/createCustomer" class="btn btn-create" style="color: white">Add new customer <i class="fa fa-plus-square-o"></i></a></anm_btn>
     <table>
         <thead>
@@ -33,13 +32,14 @@
             <td th:text="${customer.phone}"></td>
             <td th:text="${customer.email}"></td>
             <td>
-                                <a th:href="@{/order/createOrder(id=${customer.id})}" class="btn btn-detail">Vælg <i class="fa fa-search-plus"></i></a> <!-- http://www.thymeleaf.org/doc/articles/standardurlsyntax.html -->
+                                <a th:href="@{/order/createOrder(id=${customer.id})}" class="btn btn-detail">Choose <i class="fa fa-search-plus"></i></a> <!-- http://www.thymeleaf.org/doc/articles/standardurlsyntax.html -->
                 <!--                <a th:href="@{/motorhome/edit(id=${motorhome.id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>-->
-                <!--                <a th:href="@{/motorhome/delete(id=${motorhome.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>-->
+<!--                                <a th:href="@{/order/deleteOrder(id=${order.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>-->
             </td>
         </tr>
         </tbody>
     </table>
+    <cncl_btn><a href="/order" class="btn btn-cancelbtn" >Cancel <i class="fa fa-plus-square-o"></i></a></cncl_btn>
 </div>
 </body>
 <footer th:insert="footer"></footer>

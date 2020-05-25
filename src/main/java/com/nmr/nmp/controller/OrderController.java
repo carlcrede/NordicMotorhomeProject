@@ -1,31 +1,33 @@
 package com.nmr.nmp.controller;
 
 import com.nmr.nmp.data.CustomerFacadeImpl;
+import com.nmr.nmp.data.DataFacadeMotorhomeImplementation;
 import com.nmr.nmp.data.OrderFacadeImpl;
 import com.nmr.nmp.domain.models.Customer;
 import com.nmr.nmp.domain.models.Order;
+import com.nmr.nmp.domain.models.OrderLine;
 import com.nmr.nmp.domain.uccontrollers.CustomerUC;
+import com.nmr.nmp.domain.uccontrollers.MotorhomeUC;
 import com.nmr.nmp.domain.uccontrollers.OrderUC;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Controller
 public class OrderController {
 
-    OrderUC controller = new OrderUC(new OrderFacadeImpl());
+    OrderUC orderController = new OrderUC(new OrderFacadeImpl());
     CustomerUC customerController = new CustomerUC(new CustomerFacadeImpl());
+    MotorhomeUC motorhomeController = new MotorhomeUC(new DataFacadeMotorhomeImplementation());
 
     @GetMapping("/order")
     public String index(Model model) {
-        model.addAttribute("orders", controller.read());
+        model.addAttribute("orders", orderController.read());
         return "/order/index";
     }
 
@@ -67,8 +69,27 @@ public class OrderController {
         String returnDate = request.getParameter("returnDate");
         String status = request.getParameter("status");
         Order order = new Order(Integer.parseInt(customerId), startDate, returnDate, status);
-        controller.create(order);
-        return "redirect:/order";
+        orderController.create(order);
+        return "redirect:/order/productselection";
     }
+
+    @GetMapping("/order/productselection")
+    public String productselection(Model model){
+        model.addAttribute("orderlines", new ArrayList<OrderLine>());
+        model.addAttribute("motorhomes", motorhomeController.read());
+        return "/order/productselection";
+    }
+
+//    @PostMapping("/order/productselection/")
+//    public String productselection(HttpServletRequest request){
+//        request.getParameterMap("productId", quantity);
+//    }
+
+//    @GetMapping("/order/delete")
+//    public String deleteOrder(Model model, @RequestParam("id") int id){
+//        model.addAttribute(orderController.read(id));
+//        return "/order/delete";
+//    }
+
 
 }

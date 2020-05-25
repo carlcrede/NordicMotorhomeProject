@@ -30,6 +30,29 @@ public class OrderMapper {
         }
     }
 
+    public Order read(int orderId){
+        try {
+            String sql = "SELECT * FROM orders WHERE order_id=?";
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, orderId);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int order_id = rs.getInt("order_id");
+                int customerId = rs.getInt("customer_id");
+                Timestamp _orderDate = rs.getTimestamp("orderDate");
+                LocalDateTime orderDate = _orderDate.toLocalDateTime();
+                String startDate = rs.getString("startDate");
+                String returnDate = rs.getString("returnDate");
+                String status = rs.getString("orderStatus");
+                return new Order(order_id, customerId, orderDate, startDate, returnDate, status);
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+        finally {
+            if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
+        }
+        return new Order();
+    }
+
     public ArrayList<Order> read() {
         ArrayList<Order> orders = new ArrayList<>();
         try {
