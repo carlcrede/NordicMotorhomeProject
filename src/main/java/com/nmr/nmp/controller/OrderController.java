@@ -33,6 +33,23 @@ public class OrderController {
         return "order/create";
     }
 
+    @GetMapping("/order/createCustomer")
+    public String createCustomer(Model model){
+        model.addAttribute("customer", new Customer());
+        return "/order/createCustomer";
+    }
+
+    @PostMapping("/order/createCustomer")
+    public String createCustomer(HttpServletRequest request){
+        String firstname = request.getParameter("firstname");
+        String lastname = request.getParameter("lastname");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        Customer customer = new Customer(firstname, lastname, phone, email);
+        customerController.create(customer);
+        return "redirect:/order/create";
+    }
+
     @GetMapping("/order/createOrder")
     public String createOrder(Model model, @RequestParam("id") int customerId){
         model.addAttribute("order", new Order(customerId));

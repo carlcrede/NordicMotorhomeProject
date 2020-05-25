@@ -17,6 +17,20 @@ public class CustomerMapper {
     ResultSet rs = null;
 
     public void create(Customer customer){
+        try {
+            String sql_cust = "INSERT INTO customers (firstname, lastname, phone, email)" +
+                    "VALUES (?, ?, ?, ?)";
+            ps = connection.prepareStatement(sql_cust);
+            ps.setString(1, customer.getFirstname());
+            ps.setString(2, customer.getLastname());
+            ps.setString(3, customer.getPhone());
+            ps.setString(4, customer.getEmail());
+            ps.execute();
+
+        } catch (SQLException e) { e.printStackTrace(); }
+        finally {
+            if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
+        }
 
     }
 

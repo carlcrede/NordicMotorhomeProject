@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>New order</title>
+    <title>New customer</title>
 </head>
 <body>
 <div th:insert="navbar"></div>
 <div class="container">
-    <h1>New order</h1>
-    <form action="#" th:action="@{/order/createOrder}" th:object="${order}" method="post">
-        <input type="hidden" th:field="${order.customerId}"/>
-        <p>Order date: <input type="text" th:field="*{orderDate}" required/></p>
-        <p>Start date: <input type="text" th:field="*{startDate}" required/></p>
-        <p>Return date: <input type="text" th:field="*{returnDate}" required/></p>
-        <p>Status: <input type="text" th:field="*{status}" required/></p>
+    <h1>New customer</h1>
+    <form action="#" th:action="@{/order/createCustomer}" th:object="${customer}" method="post">
+        <p>First name: <input type="text" th:field="*{firstname}" required/></p>
+        <p>Last name: <input type="text" th:field="*{lastname}" required/></p>
+        <p>Phone: <input type="text" th:field="*{phone}" required/></p>
+        <p>Email: <input type="text" th:field="*{email}" required/></p>
         <input type="submit" value="Add" class="btn btn-create"/>
         <br/><br/>
         <input type="button" onclick="window.location.href = '/order/create';" value="Cancel" class="btn btn-del"/>

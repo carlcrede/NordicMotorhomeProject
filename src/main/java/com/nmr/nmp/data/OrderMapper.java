@@ -15,15 +15,6 @@ public class OrderMapper {
 
     public void create(Order order) {
         try {
-//            String sql_cust = "INSERT INTO customers (firstname, lastname, phone, email)" +
-//                    "VALUES (?, ?, ?, ?)";
-//            ps = connection.prepareStatement(sql_cust);
-//            ps.setString(1, order.getCustomer().getFirstname());
-//            ps.setString(2, order.getCustomer().getLastname());
-//            ps.setString(3, order.getCustomer().getPhone());
-//            ps.setString(4, order.getCustomer().getEmail());
-//            ps.execute();
-
             String sql = "INSERT INTO orders (customer_id, orderDate, startDate, returnDate, orderStatus)" +
                     "VALUES (?, ?, ?, ?, ?); ";
             ps = connection.prepareStatement(sql);
@@ -33,7 +24,6 @@ public class OrderMapper {
             ps.setString(4, order.getReturnDate());
             ps.setString(5, order.getStatus());
             ps.execute();
-
         } catch (SQLException e) { e.printStackTrace(); }
         finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
