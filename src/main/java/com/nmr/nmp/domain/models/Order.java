@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Order {
     private ArrayList<OrderLine> orderLines;
     private Customer customer;
+    private int id;
     private int customerId;
     private String orderDate, startDate, returnDate, status;
-    private int id;
+
 
     public Order(){
 
@@ -81,13 +82,13 @@ public class Order {
         this.id = id;
     }
 
-    public Order(int orderId, String orderDate, String startDate, String returnDate, String status, Customer customer) {
+    public Order(int orderId, int customerId, String orderDate, String startDate, String returnDate, String status) {
         this.id = orderId;
+        this.customerId = customerId;
         this.orderDate = orderDate;
         this.startDate = startDate;
         this.returnDate = returnDate;
         this.status = status;
-        this.customer = customer;
     }
 
     public Order(String orderDate, String startDate, String returnDate, String status, Customer customer) {

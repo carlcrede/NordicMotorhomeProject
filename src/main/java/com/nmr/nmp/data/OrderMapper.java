@@ -3,9 +3,9 @@ package com.nmr.nmp.data;
 import com.nmr.nmp.domain.models.Customer;
 import com.nmr.nmp.domain.models.Order;
 import com.nmr.nmp.domain.models.OrderLine;
-
 import java.sql.*;
 import java.util.ArrayList;
+import java.sql.Date;
 
 public class OrderMapper {
 
@@ -33,25 +33,24 @@ public class OrderMapper {
     public ArrayList<Order> read() {
         ArrayList<Order> orders = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM orders, customers\n" +
-                    "WHERE orders.customer_id = customers.customer_id\n";
+            String sql = "SELECT * FROM orders;";
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 // order data
-                int orderId = rs.getInt("orders.order_id");
+                int orderId = rs.getInt("order_id");
+                int customerId = rs.getInt("customer_id");
                 String orderDate = rs.getString("orderDate");
                 String startDate = rs.getString("startDate");
                 String returnDate = rs.getString("returnDate");
                 String status = rs.getString("orderStatus");
 
                 // customer data
-                Customer customer = loadCustomer(rs);
+//                Customer customer = loadCustomer(rs);
 
-                Order order = new Order(orderId, orderDate, startDate, returnDate, status, customer);
+                Order order = new Order(orderId, customerId, orderDate, startDate, returnDate, status);
                 orders.add(order);
-
                 // Orderline data
                 //ArrayList<OrderLine> orderLines = loadOrderLines(rs);
             }
@@ -67,12 +66,12 @@ public class OrderMapper {
         return  null;
     }
 
-    public Customer loadCustomer(ResultSet rs) throws SQLException {
-        int customerId = rs.getInt("customers.customer_id");
-        String firstname = rs.getString("firstname");
-        String lastname = rs.getString("lastname");
-        String phone = rs.getString("phone");
-        String email = rs.getString("email");
-        return new Customer(customerId, firstname, lastname, phone, email);
-    }
+//    public Customer loadCustomer(ResultSet rs) throws SQLException {
+//        int customerId = rs.getInt("customers.customer_id");
+//        String firstname = rs.getString("firstname");
+//        String lastname = rs.getString("lastname");
+//        String phone = rs.getString("phone");
+//        String email = rs.getString("email");
+//        return new Customer(customerId, firstname, lastname, phone, email);
+//    }
 }
