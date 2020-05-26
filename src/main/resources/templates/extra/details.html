@@ -12,10 +12,10 @@
     <h1>Details for Extra: <p th:text="'ID: ' + ${extra.product_id}"></p></h1>
 <!--    <p th:text="'ID: ' + ${extra.product_id}"></p>-->
     <p th:text="'Type: ' + ${extra.type}"></p>
-    <p th:text="'Type: ' + ${extra.price}"></p>
+    <p th:text="'Price: ' + ${extra.price}"></p>
     <p th:text="'Brand: ' + ${extra.brand}"></p>
     <p th:text="'Model: ' + ${extra.model}"></p>
-    <p th:text="'Type: ' + ${extra.stock}"></p>
+    <p th:text="'Stock: ' + ${extra.stock}"></p>
     <a class="btn btn-del" href="/extra">Go back</a>
     <a class="btn btn-ed" th:href="@{/extra/edit(id=${extra.product_id})}">Update</a>
 </div>

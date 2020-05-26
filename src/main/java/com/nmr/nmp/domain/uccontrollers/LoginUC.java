@@ -12,4 +12,5 @@ public class LoginUC {
     public User login(String userName, String password) {
         return loginFacade.login(userName, password);
     }
+
 }

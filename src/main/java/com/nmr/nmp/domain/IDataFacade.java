@@ -1,12 +1,15 @@
 package com.nmr.nmp.domain;
 
+import com.nmr.nmp.domain.models.DomainEntity;
+
 import java.util.ArrayList;
 import java.util.Map;
 
-public interface IDataFacade<T> {
-    void create(T type);
-    ArrayList<T> read();
-    T read(int id);
-    void update(T type);
+public interface IDataFacade {
+    void create(DomainEntity domainEntity);
+    ArrayList<DomainEntity> readAll();
+    ArrayList<DomainEntity> readAvailable();
+    DomainEntity read(int id);
+    void update(DomainEntity domainEntity);
     void delete(int id);
 }

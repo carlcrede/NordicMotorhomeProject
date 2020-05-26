@@ -1,8 +1,9 @@
 package com.nmr.nmp.controller;
 
-import com.nmr.nmp.data.implementations.MotorhomeFacadeImpl;
+import com.nmr.nmp.data.implementations.DataFacadeImpl;
+import com.nmr.nmp.data.mappers.MotorhomeMapper;
 import com.nmr.nmp.domain.models.Motorhome;
-import com.nmr.nmp.domain.uccontrollers.MotorhomeUC;
+import com.nmr.nmp.domain.uccontrollers.ProductUC;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MotorhomeController {
 
-    MotorhomeUC controller = new MotorhomeUC(new MotorhomeFacadeImpl());
+    ProductUC controller = new ProductUC(new DataFacadeImpl(new MotorhomeMapper()));
 
     @GetMapping("/motorhome")
     public String index(Model model) {
-        model.addAttribute("motorhomes", controller.read());
+        model.addAttribute("motorhomes", controller.readAll());
         return "/motorhome/index";
     }
 

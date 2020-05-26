@@ -1,8 +1,7 @@
 package com.nmr.nmp.domain.models;
 
-public class Extra {
+public class Extra extends DomainEntity{
 
-    private int product_id;
     private String type;
     private int price;
     private String brand;
@@ -10,10 +9,11 @@ public class Extra {
     private int stock;
 
     public Extra(){
+        super();
     }
 
-    public Extra(int product_id, String type, int price, String brand, String model, int stock) {
-        this.product_id = product_id;
+    public Extra(int id, String type, int price, String brand, String model, int stock) {
+        super(id);
         this.type = type;
         this.price = price;
         this.brand = brand;
@@ -35,14 +35,6 @@ public class Extra {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
     }
 
     public String getType() {

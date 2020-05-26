@@ -1,11 +1,11 @@
 package com.nmr.nmp.domain.models;
 
-public class Motorhome {
-    private int id;
+public class Motorhome extends DomainEntity{
     private int price;
-    private String type, brand, model;
+    private String type, brand, model, status;
 
     public Motorhome() {
+        super();
     }
 
     public Motorhome(String type, int price, String brand, String model) {
@@ -16,7 +16,7 @@ public class Motorhome {
     }
 
     public Motorhome(int id, String type, int price, String brand, String model) {
-        this.id = id;
+        super(id);
         this.type = type;
         this.price = price;
         this.model = model;
@@ -37,14 +37,6 @@ public class Motorhome {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getModel() {
