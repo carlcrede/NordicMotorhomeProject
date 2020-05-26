@@ -1,11 +1,24 @@
 package com.nmr.nmp.domain.models;
 
-public class Customer {
-    private int id;
+public class Customer extends DomainEntity{
     private String firstname, lastname, email, phone;
 
     public Customer() {
+    }
 
+    public Customer(int customerId, String firstname, String lastname, String phone, String email) {
+        super(customerId);
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public Customer(String firstname, String lastname, String phone, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.email = email;
     }
 
     public String getFirstname() {
@@ -32,14 +45,6 @@ public class Customer {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -48,18 +53,4 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Customer(int customerId, String firstname, String lastname, String phone, String email) {
-        this.id = customerId;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.email = email;
-    }
-
-    public Customer(String firstname, String lastname, String phone, String email) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.email = email;
-    }
 }

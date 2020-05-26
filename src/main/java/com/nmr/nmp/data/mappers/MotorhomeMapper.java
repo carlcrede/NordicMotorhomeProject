@@ -13,17 +13,17 @@ public class MotorhomeMapper extends DataMapper {
     }
 
     @Override
-    public String readSingleStatement(){
+    public String selectSingleStatement(){
         return "SELECT product_id, type, price, brand, model, status FROM products WHERE product_id = ? AND category='motorhome'";
     }
 
     @Override
-    public String readAllStatement() {
+    public String selectAllStatement() {
         return "SELECT product_id, type, price, brand, model, status FROM products WHERE category='motorhome' ORDER BY type";
     }
 
     @Override
-    public String readAvailableStatement() {
+    public String selectAvailableStatement() {
         return "SELECT product_id, type, price, brand, model, status FROM products WHERE category='motorhome' AND status='available' ORDER BY type";
     }
 
