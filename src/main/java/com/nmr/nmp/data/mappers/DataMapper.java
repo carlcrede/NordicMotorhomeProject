@@ -21,14 +21,14 @@ public abstract class DataMapper {
     public abstract String updateStatement();
     public abstract String deleteStatement();
 
-    public abstract void doInsert(DomainEntity domainEntity, PreparedStatement ps);
-    public abstract DomainEntity load(ResultSet resultSet);
-    protected abstract void doUpdate(DomainEntity domainEntity, PreparedStatement ps);
+    public abstract void doCreateInsert(DomainEntity domainEntity, PreparedStatement ps);
+    public abstract DomainEntity loadEntity(ResultSet resultSet);
+    public abstract void doUpdateInsert(DomainEntity domainEntity, PreparedStatement ps);
 
     public void create(DomainEntity domainEntity){
         try {
             ps = connection.prepareStatement(insertStatement());
-            doInsert(domainEntity, ps);
+            doCreateInsert(domainEntity, ps);
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -43,7 +43,7 @@ public abstract class DataMapper {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             if(rs.next()) {
-                return load(rs);
+                return loadEntity(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,7 +59,8 @@ public abstract class DataMapper {
             ps = connection.prepareStatement(readAllStatement());
             rs = ps.executeQuery();
             while (rs.next()) {
-                all.add(load(rs));
+                DomainEntity entity = loadEntity(rs);
+                all.add(entity);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,7 +76,7 @@ public abstract class DataMapper {
             ps = connection.prepareStatement(readAvailableStatement());
             rs = ps.executeQuery();
             while (rs.next()) {
-                available.add(load(rs));
+                available.add(loadEntity(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,7 +89,7 @@ public abstract class DataMapper {
     public void update(DomainEntity domainEntity){
         try {
             ps = connection.prepareStatement(updateStatement());
-            doUpdate(domainEntity, ps);
+            doUpdateInsert(domainEntity, ps);
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();

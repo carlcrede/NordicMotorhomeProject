@@ -20,7 +20,9 @@
             <th>ID</th>
             <th>Type</th>
             <th>Brand</th>
-            <th>Price</th>
+            <th>Model</th>
+            <th>Price per unit</th>
+            <th>Stock</th>
             <th></th>
         </tr>
         </thead>
@@ -28,14 +30,16 @@
         <tr th:each="extra: ${extras}">
             <!--/*@thymesVar id="studentId" type=""*/-->
             <!--        <td th:text="${student.studentId}"></td>-->
-            <td th:text="${extra.product_id}"></td>
+            <td th:text="${extra.id}"></td>
             <td th:text="${extra.type}"></td>
             <td th:text="${extra.brand}"></td>
+            <td th:text="${extra.model}"></td>
             <td th:text="${extra.price}"></td>
+            <td th:text="${extra.stock}"></td>
             <td>
-                <a th:href="@{/extra/details(id=${extra.product_id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> <!-- http://www.thymeleaf.org/doc/articles/standardurlsyntax.html -->
-                <a th:href="@{/extra/edit(id=${extra.product_id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>
-                <a th:href="@{/extra/delete(id=${extra.product_id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>
+<!--                <a th:href="@{/extra/details(id=${extra.id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> &lt;!&ndash; http://www.thymeleaf.org/doc/articles/standardurlsyntax.html &ndash;&gt;-->
+                <a th:href="@{/extra/edit(id=${extra.id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>
+                <a th:href="@{/extra/delete(id=${extra.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>
             </td>
         </tr>
         </tbody>

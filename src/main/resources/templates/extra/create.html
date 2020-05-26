@@ -14,8 +14,8 @@
         <p>Type: <input type="text" th:field="*{type}" required/></p>
         <p>Brand: <input type="text" th:field="*{brand}" required/></p>
         <p>Model: <input type="text" th:field="*{model}" required/></p>
-        <p>Stock: <input type="number" th:field="*{stock}" required/></p>
         <p>Price per unit: <input type="number" min="0" th:field="*{price}" required/></p>
+        <p>Stock: <input type="number" min="0" th:field="*{stock}" required/></p>
         <input type="submit" value="Add" class="btn btn-create"/>
         <br/><br/>
         <input type="button" onclick="window.location.href = '/extra';" value="Cancel" class="btn btn-del"/>
