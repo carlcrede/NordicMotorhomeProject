@@ -13,8 +13,11 @@
     <!-- TODO: add timestamp for create (and edit maybe) -->
 <form action="#" th:action="@{/motorhome/edit}" method="post">
     <input type="hidden" th:field="${motorhome.id}"/>
+    <p>Type: <input type="text" th:field="${motorhome.type}"/></p>
+    <p>Price: <input type="number" min="0" th:field="${motorhome.price}"/></p>
     <p>Brand: <input type="text" th:field="${motorhome.brand}"/></p>
     <p>Model: <input type="text" th:field="${motorhome.model}"/></p>
+    <p>Model: <input type="text" th:field="${motorhome.status}"/></p>
     <input type="submit" value="Update" class="btn btn-create"/>
     <br/><br/>
     <input type="button" class="btn btn-del" value="Cancel" onclick="window.location.href = '/motorhome';">

@@ -2,15 +2,14 @@ package com.nmr.nmp.domain.uccontrollers;
 
 import com.nmr.nmp.domain.IDataFacade;
 import com.nmr.nmp.domain.models.DomainEntity;
-import com.nmr.nmp.domain.models.Order;
 
 import java.util.ArrayList;
 
-public class OrderUC {
+public class ProductUC {
 
     private IDataFacade dataFacade;
 
-    public OrderUC(IDataFacade dataFacade) { this.dataFacade = dataFacade; }
+    public ProductUC(IDataFacade dataFacade) { this.dataFacade = dataFacade; }
 
     public void create(DomainEntity domainEntity) {
         dataFacade.create(domainEntity);

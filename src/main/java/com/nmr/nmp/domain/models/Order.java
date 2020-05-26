@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 public class Order {
 
-    private int id;
     private int customerId;
     private Customer customer;
     private String startDate, returnDate, status;
@@ -14,7 +13,6 @@ public class Order {
     }
 
     public Order(int orderId, int customerId, LocalDateTime orderDate, String startDate, String returnDate, String status) {
-        this.id = orderId;
         this.customerId = customerId;
         this.orderDate = orderDate;
         this.startDate = startDate;
@@ -79,14 +77,6 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
 }

@@ -1,10 +1,13 @@
 package com.nmr.nmp.domain.models;
 
-public class Product {
+public class DomainEntity {
 
     private int id;
 
-    public Product(int id) {
+    public DomainEntity() {
+    }
+
+    public DomainEntity(int id) {
         this.id = id;
     }
 
@@ -15,4 +18,5 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
+
 }
