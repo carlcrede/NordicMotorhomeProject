@@ -17,17 +17,17 @@ public class ExtraMapper extends DataMapper{
     }
 
     @Override
-    public String readSingleStatement() {
+    public String selectSingleStatement() {
         return "SELECT product_id, type, price, brand, model, stock FROM products WHERE product_id=? AND category='extra'";
     }
 
     @Override
-    public String readAllStatement() {
+    public String selectAllStatement() {
         return "SELECT product_id, type, price, brand, model, stock FROM products WHERE category='extra' ORDER BY type";
     }
 
     @Override
-    public String readAvailableStatement() {
+    public String selectAvailableStatement() {
         return "SELECT product_id, type, brand, model, stock FROM products WHERE category='extra' AND stock > 0 ORDER BY type";
     }
 

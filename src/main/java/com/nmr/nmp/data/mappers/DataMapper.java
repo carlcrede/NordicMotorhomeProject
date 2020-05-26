@@ -15,9 +15,9 @@ public abstract class DataMapper {
     ResultSet rs = null;
 
     public abstract String insertStatement();
-    public abstract String readSingleStatement();
-    public abstract String readAllStatement();
-    public abstract String readAvailableStatement();
+    public abstract String selectSingleStatement();
+    public abstract String selectAllStatement();
+    public abstract String selectAvailableStatement();
     public abstract String updateStatement();
     public abstract String deleteStatement();
 
@@ -33,13 +33,13 @@ public abstract class DataMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeStatementOrSet();
+            closeSetOrStatement();
         }
     }
 
     public DomainEntity read(int id){
         try {
-            ps = connection.prepareStatement(readSingleStatement());
+            ps = connection.prepareStatement(selectSingleStatement());
             ps.setInt(1, id);
             rs = ps.executeQuery();
             if(rs.next()) {
@@ -48,7 +48,7 @@ public abstract class DataMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeStatementOrSet();
+            closeSetOrStatement();
         }
         return null;
     }
@@ -56,7 +56,7 @@ public abstract class DataMapper {
     public ArrayList<DomainEntity> readAll(){
         ArrayList<DomainEntity> all = new ArrayList<>();
         try {
-            ps = connection.prepareStatement(readAllStatement());
+            ps = connection.prepareStatement(selectAllStatement());
             rs = ps.executeQuery();
             while (rs.next()) {
                 DomainEntity entity = loadEntity(rs);
@@ -65,7 +65,7 @@ public abstract class DataMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeStatementOrSet();
+            closeSetOrStatement();
         }
         return all;
     }
@@ -73,7 +73,7 @@ public abstract class DataMapper {
     public ArrayList<DomainEntity> readAvailable(){
         ArrayList<DomainEntity> available = new ArrayList<>();
         try {
-            ps = connection.prepareStatement(readAvailableStatement());
+            ps = connection.prepareStatement(selectAvailableStatement());
             rs = ps.executeQuery();
             while (rs.next()) {
                 available.add(loadEntity(rs));
@@ -81,7 +81,7 @@ public abstract class DataMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeStatementOrSet();
+            closeSetOrStatement();
         }
         return available;
     }
@@ -94,7 +94,7 @@ public abstract class DataMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeStatementOrSet();
+            closeSetOrStatement();
         }
     }
 
@@ -106,11 +106,11 @@ public abstract class DataMapper {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeStatementOrSet();
+            closeSetOrStatement();
         }
     }
 
-    private void closeStatementOrSet(){
+    private void closeSetOrStatement(){
         try {
             if (ps != null) {
                 ps.close();
