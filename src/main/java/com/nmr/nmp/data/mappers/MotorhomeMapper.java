@@ -14,10 +14,12 @@ public class MotorhomeMapper {
 
     public void create(Motorhome motorhome) {
         try {
-            String sql = "INSERT INTO products (type, brand, model) VALUES ('motorhome', ?, ?)";
+            String sql = "INSERT INTO products (category, type, price, brand, model) VALUES ('motorhome', ?, ?, ?, ?)";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, motorhome.getBrand());
-            ps.setString(2, motorhome.getModel());
+            ps.setString(1, motorhome.getType());
+            ps.setInt(2, motorhome.getPrice());
+            ps.setString(3, motorhome.getBrand());
+            ps.setString(4, motorhome.getModel());
             ps.execute();
 
         } catch (SQLException e) {
@@ -25,20 +27,21 @@ public class MotorhomeMapper {
         } finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
-
     }
 
     public Motorhome read(int motorhomeId) {
         try {
-            String sql = "SELECT product_id, brand, model FROM products WHERE product_id=?";
+            String sql = "SELECT product_id, type, price, brand, model FROM products WHERE product_id=? AND category='motorhome'";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, motorhomeId);
             rs = ps.executeQuery();
             if (rs.next()) {
                 int id = rs.getInt("product_id");
+                String type = rs.getString("type");
+                int price = rs.getInt("price");
                 String model = rs.getString("model");
                 String brand = rs.getString("brand");
-                return new Motorhome(id, brand, model);
+                return new Motorhome(id, type, price, brand, model);
             }
         } catch (SQLException e) { e.printStackTrace(); }
         finally {
@@ -52,15 +55,17 @@ public class MotorhomeMapper {
 
     public ArrayList<Motorhome> read() {
         ArrayList<Motorhome> motorhomes = new ArrayList<>();
-        String sql = "SELECT product_id, brand, model FROM products WHERE type='motorhome' ORDER BY model";
+        String sql = "SELECT product_id, type, price, brand, model FROM products WHERE category='motorhome' ORDER BY type";
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                String brand = rs.getString("brand");
-                String model = rs.getString("model");
                 int id = rs.getInt("product_id");
-                Motorhome motorhome = new Motorhome(id, model, brand);
+                String type = rs.getString("type");
+                int price = rs.getInt("price");
+                String model = rs.getString("model");
+                String brand = rs.getString("brand");
+                Motorhome motorhome = new Motorhome(id, type, price, brand, model);
                 motorhomes.add(motorhome);
             }
         } catch (SQLException e) { e.getMessage(); }
@@ -74,12 +79,13 @@ public class MotorhomeMapper {
 
     public void update(Motorhome motorhome) {
         try {
-//            connection = DBManager.getConnection();
-            String sql = "UPDATE products SET brand = ?, model = ? WHERE product_id=?";
+            String sql = "UPDATE products SET type = ?, price = ?, brand = ?, model = ? WHERE product_id=?";
             ps = connection.prepareStatement(sql);
-            ps.setString(1, motorhome.getBrand());
-            ps.setString(2, motorhome.getModel());
-            ps.setInt(3, motorhome.getId());
+            ps.setString(1, motorhome.getType());
+            ps.setInt(2, motorhome.getPrice());
+            ps.setString(3, motorhome.getBrand());
+            ps.setString(4, motorhome.getModel());
+            ps.setInt(5, motorhome.getId());
             ps.executeUpdate();
         } catch (SQLException e) { e.getMessage(); }
         finally {
@@ -89,7 +95,7 @@ public class MotorhomeMapper {
 
     public void delete(int id) {
         try {
-            String sql = "DELETE FROM products WHERE type='motorhome' AND product_id=?";
+            String sql = "DELETE FROM products WHERE category='motorhome' AND product_id=?";
             ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();

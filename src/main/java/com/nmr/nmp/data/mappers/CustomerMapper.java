@@ -27,14 +27,12 @@ public class CustomerMapper {
             ps.setString(3, customer.getPhone());
             ps.setString(4, customer.getEmail());
             ps.execute();
-
         } catch (SQLException e) { e.printStackTrace(); }
         finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
 
     }
-
 
     public Customer read(int customerId){
         try {

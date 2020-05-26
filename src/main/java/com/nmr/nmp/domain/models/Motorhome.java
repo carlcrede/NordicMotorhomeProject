@@ -1,22 +1,42 @@
 package com.nmr.nmp.domain.models;
 
 public class Motorhome {
-
     private int id;
-    private String model, brand;
-
-    public Motorhome(int id, String model, String brand) {
-        this.id = id;
-        this.model = model;
-        this.brand = brand;
-    }
-
-    public Motorhome(String model, String brand) {
-        this.model = model;
-        this.brand = brand;
-    }
+    private int price;
+    private String type, brand, model;
 
     public Motorhome() {
+    }
+
+    public Motorhome(String type, int price, String brand, String model) {
+        this.type = type;
+        this.price = price;
+        this.model = model;
+        this.brand = brand;
+    }
+
+    public Motorhome(int id, String type, int price, String brand, String model) {
+        this.id = id;
+        this.type = type;
+        this.price = price;
+        this.model = model;
+        this.brand = brand;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getId() {

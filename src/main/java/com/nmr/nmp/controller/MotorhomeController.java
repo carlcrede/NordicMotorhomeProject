@@ -30,9 +30,11 @@ public class MotorhomeController {
 
     @PostMapping("/motorhome/create")
     public String create(HttpServletRequest request) {
+        String type = request.getParameter("type");
+        int price = Integer.parseInt(request.getParameter("price"));
         String model = request.getParameter("model");
         String brand = request.getParameter("brand");
-        Motorhome motorhome = new Motorhome(model, brand);
+        Motorhome motorhome = new Motorhome(type, price, model, brand);
         controller.create(motorhome);
         return "redirect:/motorhome";
     }
@@ -51,10 +53,12 @@ public class MotorhomeController {
 
     @PostMapping("/motorhome/edit")
     public String update(HttpServletRequest request) {
-        String id  = request.getParameter("id");
+        int id  = Integer.parseInt(request.getParameter("id"));
+        String type = request.getParameter("type");
+        int price = Integer.parseInt(request.getParameter("price"));
         String brand = request.getParameter("brand");
         String model = request.getParameter("model");
-        Motorhome motorhome = new Motorhome(Integer.parseInt(id), brand, model);
+        Motorhome motorhome = new Motorhome(id, type, price, brand, model);
         controller.update(motorhome);
         return "redirect:/motorhome";
     }

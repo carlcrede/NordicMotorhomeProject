@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Manage extras</title>
+</head>
+<body>
+<div th:insert="navbar.html"></div>
+<div class="container">
+    <h1>Extras</h1>
+
+    <p>All extras currently in database</p>
+    <anm_btn><a href="/extra/create" class="btn btn-create" style="color: white">Add new extra <i class="fa fa-plus-square-o"></i></a></anm_btn>
+    <table>
+        <thead>
+        <tr>
+            <!--        <th>Id</th>-->
+            <th>ID</th>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="extra: ${extras}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <!--        <td th:text="${student.studentId}"></td>-->
+            <td th:text="${extra.product_id}"></td>
+            <td th:text="${extra.type}"></td>
+            <td th:text="${extra.brand}"></td>
+            <td th:text="${extra.price}"></td>
+            <td>
+                <a th:href="@{/extra/details(id=${extra.product_id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> <!-- http://www.thymeleaf.org/doc/articles/standardurlsyntax.html -->
+                <a th:href="@{/extra/edit(id=${extra.product_id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>
+                <a th:href="@{/extra/delete(id=${extra.product_id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<footer th:insert="footer"></footer>
+</html>

@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Edit Motorhome</title>
+    <title>Edit Extra</title>
 </head>
 <body>
 <div th:insert="navbar"></div>
 <div class="container">
-<h1>Edit Motorhome</h1>
+<h1>Edit Extra</h1>
     <!-- TODO: add timestamp for create (and edit maybe) -->
-<form action="#" th:action="@{/motorhome/edit}" method="post">
-    <input type="hidden" th:field="${motorhome.id}"/>
-    <p>Type: <input type="text" th:field="${motorhome.type}"/></p>
-    <p>Brand: <input type="text" th:field="${motorhome.brand}"/></p>
-    <p>Model: <input type="text" th:field="${motorhome.model}"/></p>
+<form action="#" th:action="@{/extra/edit}" method="post">
+    <input type="hidden" th:field="${extra.product_id}"/>
+    <p>Type: <input type="text" th:field="${extra.type}"/></p>
+    <p>Brand: <input type="text" th:field="${extra.brand}"/></p>
+    <p>Model: <input type="text" th:field="${extra.model}"/></p>
     <input type="submit" value="Update" class="btn btn-create"/>
     <br/><br/>
-    <input type="button" class="btn btn-del" value="Cancel" onclick="window.location.href = '/motorhome';">
+    <input type="button" class="btn btn-del" value="Cancel" onclick="window.location.href = '/extra';">
 </form>
 </div>
 </body>
