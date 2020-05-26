@@ -2,7 +2,7 @@ package com.nmr.nmp.domain.models;
 
 import java.time.LocalDateTime;
 
-public class Order {
+public class Order extends DomainEntity {
 
     private int customerId;
     private Customer customer;
@@ -13,6 +13,7 @@ public class Order {
     }
 
     public Order(int orderId, int customerId, LocalDateTime orderDate, String startDate, String returnDate, String status) {
+        super(orderId);
         this.customerId = customerId;
         this.orderDate = orderDate;
         this.startDate = startDate;

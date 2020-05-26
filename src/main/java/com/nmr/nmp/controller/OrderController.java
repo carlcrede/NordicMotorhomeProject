@@ -1,19 +1,24 @@
 package com.nmr.nmp.controller;
 
+import com.nmr.nmp.data.implementations.DataFacadeImpl;
+import com.nmr.nmp.data.mappers.OrderMapper;
+import com.nmr.nmp.domain.uccontrollers.OrderUC;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class OrderController {
 
-//    OrderUC orderController = new OrderUC(new OrderFacadeImpl());
+    OrderUC controller = new OrderUC(new DataFacadeImpl(new OrderMapper()));
 //    CustomerUC customerController = new CustomerUC(new CustomerFacadeImpl());
 //    MotorhomeUC motorhomeController = new MotorhomeUC(new MotorhomeFacadeImpl());
 //
-//    @GetMapping("/order")
-//    public String index(Model model) {
-//        model.addAttribute("orders", orderController.read());
-//        return "/order/index";
-//    }
+    @GetMapping("/order")
+    public String index(Model model) {
+        model.addAttribute("orders", controller.readAll());
+        return "/order/index";
+    }
 //
 //    @GetMapping("/order/create")
 //    public String create(Model model) {

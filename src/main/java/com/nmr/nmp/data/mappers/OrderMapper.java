@@ -2,6 +2,7 @@ package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.data.DBManager;
 import com.nmr.nmp.domain.models.Customer;
+import com.nmr.nmp.domain.models.DomainEntity;
 import com.nmr.nmp.domain.models.Order;
 import com.nmr.nmp.domain.models.OrderLine;
 import java.sql.*;
@@ -9,11 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.sql.Date;
 
-public class OrderMapper {
-
-    Connection connection = DBManager.getConnection();
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+public class OrderMapper extends DataMapper {
 
     public void create(Order order) {
         try {
@@ -29,6 +26,63 @@ public class OrderMapper {
         finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
+    }
+
+    @Override
+    public String insertStatement() {
+        return null;
+    }
+
+    @Override
+    public String readSingleStatement() {
+        return null;
+    }
+
+    @Override
+    public String readAllStatement() {
+        return "SELECT * FROM orders ORDER BY orderDate DESC";
+    }
+
+    @Override
+    public String readAvailableStatement() {
+        return null;
+    }
+
+    @Override
+    public String updateStatement() {
+        return null;
+    }
+
+    @Override
+    public String deleteStatement() {
+        return null;
+    }
+
+    @Override
+    public void doCreateInsert(DomainEntity domainEntity, PreparedStatement ps) {
+
+    }
+
+    @Override
+    public DomainEntity loadEntity(ResultSet resultSet) {
+        try {
+            int orderId = rs.getInt("order_id");
+            int customerId = rs.getInt("customer_id");
+            Timestamp _orderDate = rs.getTimestamp("orderDate");
+            LocalDateTime orderDate = _orderDate.toLocalDateTime();
+            String startDate = rs.getString("startDate");
+            String returnDate = rs.getString("returnDate");
+            String status = rs.getString("orderStatus");
+            return new Order(orderId, customerId, orderDate, startDate, returnDate, status);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void doUpdateInsert(DomainEntity domainEntity, PreparedStatement ps) {
+
     }
 
     public Order read(int orderId){
