@@ -12,7 +12,7 @@
     <h1>Add Motorhome</h1>
     <form action="#" th:action="@{/motorhome/create}" th:object="${motorhome}" method="post">
         <p>Type: <input type="text" th:field="*{type}" required/></p>
-        <p>Price: <input type="number" th:field="*{price}" required/></p>
+        <p>Price (DKK): <input type="number" th:field="*{price}" required/></p>
         <p>Model: <input type="text" th:field="*{model}" required/></p>
         <p>Brand: <input type="text" th:field="*{brand}" required/></p>
         <input type="submit" value="Add" class="btn btn-create"/>

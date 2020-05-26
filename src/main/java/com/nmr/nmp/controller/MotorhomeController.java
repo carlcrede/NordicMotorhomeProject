@@ -35,7 +35,8 @@ public class MotorhomeController {
         int price = Integer.parseInt(request.getParameter("price"));
         String model = request.getParameter("model");
         String brand = request.getParameter("brand");
-        Motorhome motorhome = new Motorhome(type, price, model, brand);
+        String status = request.getParameter("status");
+        Motorhome motorhome = new Motorhome(type, price, model, brand, status);
         controller.create(motorhome);
         return "redirect:/motorhome";
     }
@@ -59,7 +60,8 @@ public class MotorhomeController {
         int price = Integer.parseInt(request.getParameter("price"));
         String brand = request.getParameter("brand");
         String model = request.getParameter("model");
-        Motorhome motorhome = new Motorhome(id, type, price, brand, model);
+        String status = request.getParameter("status");
+        Motorhome motorhome = new Motorhome(id, type, price, brand, model, status);
         controller.update(motorhome);
         return "redirect:/motorhome";
     }
