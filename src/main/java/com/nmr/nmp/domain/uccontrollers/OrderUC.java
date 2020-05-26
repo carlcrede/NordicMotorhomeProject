@@ -1,33 +1,39 @@
 package com.nmr.nmp.domain.uccontrollers;
 
 import com.nmr.nmp.domain.IDataFacade;
+import com.nmr.nmp.domain.models.DomainEntity;
 import com.nmr.nmp.domain.models.Order;
 
 import java.util.ArrayList;
 
 public class OrderUC {
 
-//    private IDataFacade<Order> dataFacade;
-//
-//    public OrderUC(IDataFacade<Order> dataFacade) { this.dataFacade = dataFacade; }
-//
-//    public void create(Order order) {
-//        dataFacade.create(order);
-//    }
-//
-//    public Order read(int id) {
-//        return dataFacade.read(id);
-//    }
-//
-//    public ArrayList<Order> read() {
-//        return dataFacade.read();
-//    }
-//
-//    public void update(Order order) {
-//        dataFacade.update(order);
-//    }
-//
-//    public void delete(int id) {
-//        dataFacade.delete(id);
-//    }
+    private IDataFacade dataFacade;
+
+    public OrderUC(IDataFacade dataFacade) { this.dataFacade = dataFacade; }
+
+    public void create(DomainEntity domainEntity) {
+        dataFacade.create(domainEntity);
+    }
+
+    public DomainEntity read(int id) {
+        return dataFacade.read(id);
+    }
+
+    public ArrayList<DomainEntity> readAll() {
+        return dataFacade.readAll();
+    }
+
+    public ArrayList<DomainEntity> readAvailable() {
+        return dataFacade.readAvailable();
+    }
+
+    public void update(DomainEntity domainEntity) {
+        dataFacade.update(domainEntity);
+    }
+
+    public void delete(int id) {
+        dataFacade.delete(id);
+    }
+
 }
