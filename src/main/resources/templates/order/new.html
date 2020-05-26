@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>New order - choose motorhome</title>
+</head>
+<body>
+<div th:insert="navbar.html"></div>
+<div class="container">
+    <h1>Choose motorhome</h1>
+
+    <p>Motorhomes that are currently available</p>
+    <table>
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="motorhome: ${motorhomes}">
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.price}"></td>
+            <td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<footer th:insert="footer"></footer>
+</html>
