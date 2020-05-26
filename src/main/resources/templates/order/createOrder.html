@@ -11,11 +11,11 @@
 <div class="container">
     <h1>New order</h1>
     <form action="#" th:action="@{/order/createOrder}" th:object="${order}" method="post">
-        <input type="hidden" th:field="${order.customerId}"/>
+        <input type="hidden" th:field="*{customerId}"/>
         <p>Start date: <input type="text" th:field="*{startDate}" required/></p>
         <p>Return date: <input type="text" th:field="*{returnDate}" required/></p>
         <p>Status: <input type="text" th:field="*{status}" required/></p>
-        <input type="submit" value="Add" class="btn btn-create"/>
+        <input type="submit" value="Next" class="btn btn-create"/>
         <br/><br/>
         <input type="button" onclick="window.location.href = '/order/create';" value="Cancel" class="btn btn-del"/>
     </form>

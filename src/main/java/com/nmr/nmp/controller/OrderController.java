@@ -70,11 +70,13 @@ public class OrderController {
         String status = request.getParameter("status");
         Order order = new Order(Integer.parseInt(customerId), startDate, returnDate, status);
         orderController.create(order);
-        return "redirect:/order/productselection";
+        ArrayList<Order> orders = orderController.read();
+        int orderId = orders.get(orders.size() - 1).getId();
+        return "redirect:/order/productselection" + "?id=" + orderId;
     }
 
     @GetMapping("/order/productselection")
-    public String productselection(Model model){
+    public String productselection(Model model, @RequestParam("id") int id){
         model.addAttribute("orderlines", new ArrayList<OrderLine>());
         model.addAttribute("motorhomes", motorhomeController.read());
         return "/order/productselection";
