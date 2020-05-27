@@ -35,7 +35,7 @@ public class OrderController {
 
     @GetMapping("/order/new")
     public String create(Model model) {
-        model.addAttribute("availableMotorhomes", motorhomeController.readAvailable());
+        model.addAttribute("motorhomes", motorhomeController.readAvailable());
         return "order/new";
     }
 
