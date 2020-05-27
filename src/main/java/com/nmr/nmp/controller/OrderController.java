@@ -33,10 +33,10 @@ public class OrderController {
         return "/order/index";
     }
 
-    @GetMapping("/order/create")
+    @GetMapping("/order/new")
     public String create(Model model) {
-        model.addAttribute("customers", customerController.readAll());
-        return "order/create";
+        model.addAttribute("availableMotorhomes", motorhomeController.readAvailable());
+        return "order/new";
     }
 
     @GetMapping("/order/createCustomer")

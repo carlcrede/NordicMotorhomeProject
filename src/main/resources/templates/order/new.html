@@ -23,11 +23,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="motorhome: ${motorhomes}">
-            <td th:text="${motorhome.type}"></td>
-            <td th:text="${motorhome.brand}"></td>
-            <td th:text="${motorhome.model}"></td>
-            <td th:text="${motorhome.price}"></td>
+        <tr th:each="motorhome: ${availableMotorhomes}">
+            <td th:text="*{type}"></td>
+            <td th:text="*{brand}"></td>
+            <td th:text="*{model}"></td>
+            <td th:text="*{price}"></td>
             <td>
             </td>
         </tr>
