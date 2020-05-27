@@ -23,9 +23,11 @@ import java.util.ArrayList;
 public class OrderController {
 
     OrderUC controller = new OrderUC(new DataFacadeImpl(new OrderMapper()));
-    CustomerUC customerController = new CustomerUC(new DataFacadeImpl(new CustomerMapper()));
     ProductUC motorhomeController = new ProductUC(new DataFacadeImpl(new MotorhomeMapper()));
     ProductUC extraController = new ProductUC(new DataFacadeImpl(new ExtraMapper()));
+    CustomerUC getCustomerController = new CustomerUC(new DataFacadeImpl(new CustomerMapper()));
+
+    Order order = new Order();
 
     @GetMapping("/order")
     public String index(Model model) {
@@ -35,30 +37,40 @@ public class OrderController {
 
     @GetMapping("/order/new")
     public String create(Model model) {
-//        model.addAttribute("order", new Order());
-//        model.addAttribute("product_id", new String());
-        model.addAttribute("orderline", new Orderline());
-        model.addAttribute("orderlineslist", new ArrayList<Orderline>());
-        model.addAttribute("motor", new Motorhome());
+        model.addAttribute("cart", new Cart());
         model.addAttribute("motorhomes", motorhomeController.readAvailable());
-//        model.addAttribute("singleextra", new Extra());
-////        model.addAttribute("extras", extraController.readAvailable());
-
-//        model.addAttribute("extras", extraController.readAvailable());
+        model.addAttribute("extras", extraController.readAvailable());
         return "order/new";
     }
 
     @PostMapping("/order/new")
-    public String create(@ModelAttribute("motorhome") Motorhome motorhome){
-        ArrayList<Orderline> orderlineslist = new ArrayList();
-        Orderline orderline = new Orderline();
-        orderline.setProductId(motorhome.getId());
-        orderlineslist.add(orderline);
-        Order order = new Order();
-        order.setOrderlines(orderlineslist);
-        return "redirect:/order";
+    public String create(@ModelAttribute("cart") Cart cart){
+        ArrayList<Integer> products = cart.getProducts();
+        for(Integer product : products){
+            Orderline orderline = new Orderline(product);
+            order.addOrderline(orderline);
+        }
+        return "redirect:/order/pickcustomer";
     }
 
+    @GetMapping("/order/pickcustomer")
+    public String customer(Model model){
+        model.addAttribute("order", order);
+        model.addAttribute("customers", getCustomerController.readAll());
+        return "/order/pickcustomer";
+    }
+
+    @PostMapping("/order/pickcustomer")
+    public String customer(@ModelAttribute("order") Order placeholder){
+        order.setCustomerId(placeholder.getCustomerId());
+        controller.create(order);
+//
+//        ArrayList<Orderline> orderlines = order.getOrderlines();
+//        for(Orderline orderline : orderlines){
+//            orderlineController.create(orderline);
+//        }
+        return "redirect:/order";
+    }
 
 //    @GetMapping("/order/createCustomer")
 //    public String createCustomer(Model model){

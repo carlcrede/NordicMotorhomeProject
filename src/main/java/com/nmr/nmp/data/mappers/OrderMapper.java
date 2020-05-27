@@ -9,7 +9,7 @@ public class OrderMapper extends DataMapper {
     @Override
     public String insertStatement() {
         return "INSERT INTO orders (customer_id, startDate, returnDate, orderStatus)" +
-                "VALUES (?, ?, ?, ?); ";
+                "VALUES (?, ?, ?, ?)";
     }
 
     @Override

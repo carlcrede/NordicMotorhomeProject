@@ -9,7 +9,8 @@ public class Order extends DomainEntity {
     private Customer customer;
     private String startDate, returnDate, status;
     private LocalDateTime orderDate;
-    private ArrayList<Orderline> orderlines = new ArrayList<Orderline>();
+
+    private ArrayList<Orderline> orderlines = new ArrayList();
 
     public Order(){
     }
@@ -80,6 +81,14 @@ public class Order extends DomainEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void addOrderline(Orderline orderline){
+        orderlines.add(orderline);
+    }
+
+    public ArrayList<Orderline> getOrderlines() {
+        return orderlines;
     }
 
     public void setOrderlines(ArrayList<Orderline> orderlines) {

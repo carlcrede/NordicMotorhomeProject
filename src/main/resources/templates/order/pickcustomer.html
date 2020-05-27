@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Orders</title>
+</head>
+<body>
+<div th:insert="navbar.html"></div>
+
+<div class="container">
+    <anm_btn><a href="/order/new/createCustomer" class="btn btn-create" style="color: white">Add new customer <i class="fa fa-plus-square-o"></i></a></anm_btn>
+    <h1>All customers in the system</h1>
+    <p>Choose customer for new order</p>
+    <form action="#" th:action="@{/order/pickcustomer}" th:object="${order}" method="post">
+        <p>Extras that are currently available</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Customer Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer: ${customers}">
+                <!--/*@thymesVar id="studentId" type=""*/-->
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.firstname}"></td>
+                <td th:text="${customer.lastname}"></td>
+                <td th:text="${customer.phone}"></td>
+                <td th:text="${customer.email}"></td>
+                <td>
+                <input type="radio" th:field="*{customerId}" th:value="${customer.id}" />
+                </td>
+<!--                <td><input type="submit" th:field="*{customerId}" th:value="${customer.id}" /> </td>-->
+            </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Next">
+        <cncl_btn><a href="/order" class="btn btn-cancelbtn" >Cancel <i class="fa fa-plus-square-o"></i></a></cncl_btn>
+    </form>
+</div>
+</body>
+<footer th:insert="footer"></footer>
+</html>
