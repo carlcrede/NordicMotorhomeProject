@@ -11,12 +11,11 @@ public class Motorhome extends DomainEntity{
         super();
     }
 
-    public Motorhome(String type, int price, String brand, String model, String status) {
+    public Motorhome(String type, int price, String brand, String model) {
         this.type = type;
         this.price = price;
         this.model = model;
         this.brand = brand;
-        this.status = status;
     }
 
     public Motorhome(int id, String type, int price, String brand, String model, String status) {

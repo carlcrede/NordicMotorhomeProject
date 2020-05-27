@@ -7,6 +7,7 @@ import com.nmr.nmp.domain.uccontrollers.ProductUC;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,13 +31,7 @@ public class MotorhomeController {
     }
 
     @PostMapping("/motorhome/create")
-    public String create(HttpServletRequest request) {
-        String type = request.getParameter("type");
-        int price = Integer.parseInt(request.getParameter("price"));
-        String model = request.getParameter("model");
-        String brand = request.getParameter("brand");
-        String status = request.getParameter("status");
-        Motorhome motorhome = new Motorhome(type, price, model, brand, status);
+    public String create(@ModelAttribute("motorhome") Motorhome motorhome) {
         controller.create(motorhome);
         return "redirect:/motorhome";
     }
@@ -54,22 +49,8 @@ public class MotorhomeController {
     }
 
     @PostMapping("/motorhome/edit")
-    public String update(HttpServletRequest request) {
-        int id  = Integer.parseInt(request.getParameter("id"));
-        String type = request.getParameter("type");
-        int price = Integer.parseInt(request.getParameter("price"));
-        String brand = request.getParameter("brand");
-        String model = request.getParameter("model");
-        String status = request.getParameter("status");
-        Motorhome motorhome = new Motorhome(id, type, price, brand, model, status);
+    public String update(@ModelAttribute("motorhome") Motorhome motorhome) {
         controller.update(motorhome);
-        return "redirect:/motorhome";
-    }
-
-    @PostMapping("/motorhome/delete")
-    public String delete(HttpServletRequest request) {
-        String id = request.getParameter("id");
-        controller.delete(Integer.parseInt(id));
         return "redirect:/motorhome";
     }
 
@@ -77,6 +58,13 @@ public class MotorhomeController {
     public String delete(@RequestParam("id") int id, Model model) {
         model.addAttribute("motorhome", controller.read(id));
         return "/motorhome/delete";
+    }
+
+    @PostMapping("/motorhome/delete")
+    public String delete(HttpServletRequest request) {
+        String id = request.getParameter("id");
+        controller.delete(Integer.parseInt(id));
+        return "redirect:/motorhome";
     }
 
 }

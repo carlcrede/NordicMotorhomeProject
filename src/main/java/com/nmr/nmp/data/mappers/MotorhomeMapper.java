@@ -9,7 +9,7 @@ public class MotorhomeMapper extends DataMapper {
 
     @Override
     public String insertStatement(){
-        return "INSERT INTO products (category, type, price, brand, model, status) VALUES ('motorhome', ?, ?, ?, ?)";
+        return "INSERT INTO products (category, type, price, brand, model) VALUES ('motorhome', ?, ?, ?, ?)";
     }
 
     @Override
@@ -45,7 +45,6 @@ public class MotorhomeMapper extends DataMapper {
             ps.setInt(2, motorhome.getPrice());
             ps.setString(3, motorhome.getBrand());
             ps.setString(4, motorhome.getModel());
-            ps.setString(5, motorhome.getStatus());
         } catch (SQLException e) {
             e.printStackTrace();
         }
