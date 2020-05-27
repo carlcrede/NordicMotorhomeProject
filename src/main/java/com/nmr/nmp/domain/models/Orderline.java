@@ -6,12 +6,15 @@ public class Orderline extends DomainEntity{
     private int productId;
     private int quantity;
 
-    public Orderline(){
-
-    }
+    public Orderline(){}
 
     public Orderline(int productId){
         this.productId = productId;
+    }
+
+    public Orderline(int productId, int quantity){
+        this.productId = productId;
+        this.quantity = quantity;
     }
 
     public Orderline(int orderId, int productId, int quantity) {

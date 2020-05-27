@@ -82,4 +82,7 @@ public class Order extends DomainEntity {
         this.status = status;
     }
 
+    public void setOrderlines(ArrayList<Orderline> orderlines) {
+        this.orderlines = orderlines;
+    }
 }
