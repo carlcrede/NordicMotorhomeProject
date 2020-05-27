@@ -10,7 +10,7 @@
 <div th:insert="navbar.html"></div>
 <div class="container">
     <h1>Choose motorhome</h1>
-
+<form action="#" th:action="@{/order/new}" method="post">
     <p>Motorhomes that are currently available</p>
     <table>
         <thead>
@@ -19,20 +19,22 @@
             <th>Brand</th>
             <th>Model</th>
             <th>Price</th>
-            <th></th>
+            <th>Select</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="motorhome: ${availableMotorhomes}">
-            <td th:text="*{type}"></td>
-            <td th:text="*{brand}"></td>
-            <td th:text="*{model}"></td>
-            <td th:text="*{price}"></td>
-            <td>
-            </td>
+        <tr th:each="motorhome: ${motorhomes}">
+            <td th:text="${motorhome.type}"></td>
+            <td th:text="${motorhome.brand}"></td>
+            <td th:text="${motorhome.model}"></td>
+            <td th:text="${motorhome.price}"></td>
+            <input type="hidden" th:value="${motorhome.id}"/>
+            <td><input type="radio" th:field="${motorhome.id}" name="selectedMotorhome"/> </td>
         </tr>
         </tbody>
     </table>
+    <input type="submit" value="Next">
+</form>
 </div>
 </body>
 <footer th:insert="footer"></footer>
