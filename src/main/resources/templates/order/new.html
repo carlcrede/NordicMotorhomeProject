@@ -10,7 +10,7 @@
 <div th:insert="navbar.html"></div>
 <div class="container">
     <h1>Choose motorhome</h1>
-<form action="#" th:action="@{/order/new}" method="post">
+<form action="#" th:action="@{/order/new}" th:object="${motorhome}" method="post">
     <p>Motorhomes that are currently available</p>
     <table>
         <thead>
@@ -28,8 +28,8 @@
             <td th:text="${motorhome.brand}"></td>
             <td th:text="${motorhome.model}"></td>
             <td th:text="${motorhome.price}"></td>
-            <input type="hidden" th:value="${motorhome.id}"/>
-            <td><input type="radio" th:field="${motorhome.id}" name="selectedMotorhome"/> </td>
+<!--            <input type="hidden" th:value="${motorhome.id}"/>-->
+            <td><input type="radio" th:field="*{id}" th:value="${motorhome.id}" name="selectedMotorhome"/> </td>
         </tr>
         </tbody>
     </table>
