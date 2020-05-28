@@ -11,7 +11,7 @@ public class OrderlineMapper extends DataMapper {
 
     @Override
     public String insertStatement() {
-        return "INSERT INTO orderlines(order_id, product_id, quantity) VALUES (?, ?, ?)";
+        return "INSERT INTO orderlines(order_id, product_id) VALUES (?, ?)";
     }
 
     @Override
@@ -50,7 +50,6 @@ public class OrderlineMapper extends DataMapper {
         try {
             ps.setInt(1, orderline.getOrderId());
             ps.setInt(2, orderline.getProductId());
-            ps.setInt(3, orderline.getQuantity());
         } catch (SQLException e) { e.printStackTrace(); }
     }
 

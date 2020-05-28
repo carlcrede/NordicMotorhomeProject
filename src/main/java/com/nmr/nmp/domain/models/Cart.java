@@ -7,7 +7,6 @@ import java.util.Map;
 public class Cart {
 
     ArrayList<Integer> products = new ArrayList<>();
-    ArrayList<Integer> quant = new ArrayList<>();
 
     public Cart(){
     }
@@ -18,14 +17,6 @@ public class Cart {
 
     public void setProducts(ArrayList<Integer> products) {
         this.products = products;
-    }
-
-    public ArrayList<Integer> getQuant() {
-        return quant;
-    }
-
-    public void setQuant(ArrayList<Integer> quant) {
-        this.quant = quant;
     }
 
 }

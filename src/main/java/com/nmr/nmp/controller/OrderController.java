@@ -36,8 +36,6 @@ public class OrderController {
 
     @GetMapping("/order/new")
     public String create(Model model) {
-//        model.addAttribute("orderline", new Orderline());
-//        model.addAttribute("order", order);
         model.addAttribute("cart", new Cart());
         model.addAttribute("allMotorhomes", motorhomeController.readAvailable());
         model.addAttribute("allExtras", extraController.readAvailable());
@@ -47,15 +45,9 @@ public class OrderController {
     @PostMapping("/order/new")
     public String create(@ModelAttribute("cart") Cart cart){
         ArrayList<Integer> products = cart.getProducts();
-        ArrayList<Integer> quantitites = cart.getQuant();
         for(int i = 0; i < products.size(); i++){
-            if(quantitites.get(i) != null) {
-                {
-                    int product_id = products.get(i);
-                    int quantity = quantitites.get(i);
-                    order.addOrderline(new Orderline(product_id, quantity));
-                }
-            }
+            int product_id = products.get(i);
+            order.addOrderline(new Orderline(product_id));
         }
         return "redirect:/order/pickcustomer";
     }
