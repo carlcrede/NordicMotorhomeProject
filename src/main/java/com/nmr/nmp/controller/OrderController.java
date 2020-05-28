@@ -1,10 +1,7 @@
 package com.nmr.nmp.controller;
 
 import com.nmr.nmp.data.implementations.DataFacadeImpl;
-import com.nmr.nmp.data.mappers.CustomerMapper;
-import com.nmr.nmp.data.mappers.ExtraMapper;
-import com.nmr.nmp.data.mappers.MotorhomeMapper;
-import com.nmr.nmp.data.mappers.OrderMapper;
+import com.nmr.nmp.data.mappers.*;
 import com.nmr.nmp.domain.models.*;
 import com.nmr.nmp.domain.uccontrollers.CustomerUC;
 import com.nmr.nmp.domain.uccontrollers.OrderUC;
@@ -20,7 +17,8 @@ import java.util.ArrayList;
 @Controller
 public class OrderController {
 
-    OrderUC controller = new OrderUC(new DataFacadeImpl(new OrderMapper()));
+    OrderUC orderController = new OrderUC(new DataFacadeImpl(new OrderMapper()));
+    OrderUC orderlineController = new OrderUC(new DataFacadeImpl(new OrderlineMapper()));
     ProductUC motorhomeController = new ProductUC(new DataFacadeImpl(new MotorhomeMapper()));
     ProductUC extraController = new ProductUC(new DataFacadeImpl(new ExtraMapper()));
     CustomerUC getCustomerController = new CustomerUC(new DataFacadeImpl(new CustomerMapper()));
@@ -29,7 +27,7 @@ public class OrderController {
 
     @GetMapping("/order")
     public String index(Model model) {
-        model.addAttribute("orders", controller.readAll());
+        model.addAttribute("orders", orderController.readAll());
         return "/order/index";
     }
 
@@ -61,12 +59,13 @@ public class OrderController {
     @PostMapping("/order/pickcustomer")
     public String customer(@ModelAttribute("order") Order placeholder){
         order.setCustomerId(placeholder.getCustomerId());
-        controller.create(order);
-//
-//        ArrayList<Orderline> orderlines = order.getOrderlines();
-//        for(Orderline orderline : orderlines){
-//            orderlineController.create(orderline);
-//        }
+        orderController.create(order);
+        int order_id = orderController.readLastInsertID();
+        ArrayList<Orderline> orderlines = order.getOrderlines();
+        for(Orderline orderline : orderlines){
+            orderline.setOrderId(order_id);
+            orderlineController.create(orderline);
+        }
         return "redirect:/order";
     }
 

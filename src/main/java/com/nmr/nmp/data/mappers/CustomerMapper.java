@@ -41,6 +41,11 @@ public class CustomerMapper extends DataMapper{
     }
 
     @Override
+    public String selectLastInsertID() {
+        return null;
+    }
+
+    @Override
     public void doCreateInsert(DomainEntity domainEntity, PreparedStatement ps) {
         Customer customer = (Customer) domainEntity;
         try {
@@ -62,6 +67,11 @@ public class CustomerMapper extends DataMapper{
             return new Customer(customerID, firstname, lastname, phone, email);
         } catch (SQLException e) { e.printStackTrace(); }
         return null;
+    }
+
+    @Override
+    public int loadLastInsertID(ResultSet resultSet) {
+        return 0;
     }
 
     @Override

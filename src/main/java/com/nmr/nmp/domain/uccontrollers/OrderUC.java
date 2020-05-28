@@ -20,6 +20,10 @@ public class OrderUC {
         return dataFacade.read(id);
     }
 
+    public int readLastInsertID(){
+        return dataFacade.readLastInsertID();
+    }
+
     public ArrayList<DomainEntity> readAll() {
         return dataFacade.readAll();
     }

@@ -20,6 +20,16 @@ public class DataFacadeImpl implements IDataFacade {
     }
 
     @Override
+    public DomainEntity read(int id) {
+        return dataMapper.read(id);
+    }
+
+    @Override
+    public int readLastInsertID() {
+        return dataMapper.readLastInsertID();
+    }
+
+    @Override
     public ArrayList<DomainEntity> readAll() {
         return dataMapper.readAll();
     }
@@ -27,11 +37,6 @@ public class DataFacadeImpl implements IDataFacade {
     @Override
     public ArrayList<DomainEntity> readAvailable() {
         return dataMapper.readAvailable();
-    }
-
-    @Override
-    public DomainEntity read(int id) {
-        return dataMapper.read(id);
     }
 
     @Override

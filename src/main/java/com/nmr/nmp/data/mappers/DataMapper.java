@@ -20,9 +20,11 @@ public abstract class DataMapper {
     public abstract String selectAvailableStatement();
     public abstract String updateStatement();
     public abstract String deleteStatement();
+    public abstract String selectLastInsertID();
 
     public abstract void doCreateInsert(DomainEntity domainEntity, PreparedStatement ps);
     public abstract DomainEntity loadEntity(ResultSet resultSet);
+    public abstract int loadLastInsertID(ResultSet resultSet);
     public abstract void doUpdateInsert(DomainEntity domainEntity, PreparedStatement ps);
 
     public void create(DomainEntity domainEntity){
@@ -51,6 +53,19 @@ public abstract class DataMapper {
             closeSetOrStatement();
         }
         return null;
+    }
+
+    public int readLastInsertID(){
+        try {
+            ps = connection.prepareStatement(selectLastInsertID());
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                return loadLastInsertID(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public ArrayList<DomainEntity> readAll(){

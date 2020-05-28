@@ -10,6 +10,7 @@ public interface IDataFacade {
     ArrayList<DomainEntity> readAll();
     ArrayList<DomainEntity> readAvailable();
     DomainEntity read(int id);
+    int readLastInsertID();
 //    DomainEntity readLast();
     void update(DomainEntity domainEntity);
     void delete(int id);

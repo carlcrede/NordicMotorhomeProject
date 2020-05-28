@@ -38,6 +38,11 @@ public class MotorhomeMapper extends DataMapper {
     }
 
     @Override
+    public String selectLastInsertID() {
+        return null;
+    }
+
+    @Override
     public void doCreateInsert(DomainEntity domainEntity, PreparedStatement ps){
         Motorhome motorhome = (Motorhome)domainEntity;
         try {
@@ -64,6 +69,11 @@ public class MotorhomeMapper extends DataMapper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public int loadLastInsertID(ResultSet resultSet) {
+        return 0;
     }
 
     @Override

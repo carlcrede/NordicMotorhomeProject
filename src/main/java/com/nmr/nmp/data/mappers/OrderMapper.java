@@ -18,6 +18,11 @@ public class OrderMapper extends DataMapper {
     }
 
     @Override
+    public String selectLastInsertID() {
+        return "SELECT MAX(order_id) FROM orders";
+    }
+
+    @Override
     public String selectAllStatement() {
         return "SELECT * FROM orders ORDER BY orderDate DESC";
     }
@@ -65,6 +70,16 @@ public class OrderMapper extends DataMapper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public int loadLastInsertID(ResultSet resultSet) {
+        try {
+            return rs.getInt("MAX(order_id)");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override

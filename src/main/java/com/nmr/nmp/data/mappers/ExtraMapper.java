@@ -41,6 +41,11 @@ public class ExtraMapper extends DataMapper{
     }
 
     @Override
+    public String selectLastInsertID() {
+        return null;
+    }
+
+    @Override
     public void doCreateInsert(DomainEntity domainEntity, PreparedStatement ps){
         Extra extra = (Extra) domainEntity;
         try {
@@ -68,6 +73,11 @@ public class ExtraMapper extends DataMapper{
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public int loadLastInsertID(ResultSet resultSet) {
+        return 0;
     }
 
     @Override

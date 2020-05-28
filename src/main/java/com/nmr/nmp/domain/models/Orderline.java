@@ -4,7 +4,7 @@ public class Orderline extends DomainEntity{
 
     private int orderId;
     private int productId;
-    private int quantity;
+    private int quantity = 1;
 
     public Orderline(){}
 
@@ -28,6 +28,14 @@ public class Orderline extends DomainEntity{
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public int getProductId() {
