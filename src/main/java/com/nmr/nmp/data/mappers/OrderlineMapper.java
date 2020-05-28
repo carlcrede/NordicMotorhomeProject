@@ -1,7 +1,6 @@
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.domain.models.DomainEntity;
-import com.nmr.nmp.domain.models.Order;
 import com.nmr.nmp.domain.models.Orderline;
 
 import java.sql.PreparedStatement;

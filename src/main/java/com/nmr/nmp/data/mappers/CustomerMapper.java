@@ -57,7 +57,7 @@ public class CustomerMapper extends DataMapper{
     }
 
     @Override
-    public DomainEntity loadEntity(ResultSet resultSet) {
+    public DomainEntity loadEntity(ResultSet rs) {
         try {
             int customerID = rs.getInt("customer_id");
             String firstname = rs.getString("firstname");

@@ -56,7 +56,7 @@ public class OrderMapper extends DataMapper {
     }
 
     @Override
-    public DomainEntity loadEntity(ResultSet resultSet) {
+    public DomainEntity loadEntity(ResultSet rs) {
         try {
             int orderId = rs.getInt("order_id");
             int customerId = rs.getInt("customer_id");
@@ -73,7 +73,7 @@ public class OrderMapper extends DataMapper {
     }
 
     @Override
-    public int loadLastInsertID(ResultSet resultSet) {
+    public int loadLastInsertID(ResultSet rs) {
         try {
             return rs.getInt("MAX(order_id)");
         } catch (SQLException e){

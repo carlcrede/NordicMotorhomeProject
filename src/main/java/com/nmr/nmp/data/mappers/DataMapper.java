@@ -10,9 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class DataMapper {
-    Connection connection = DBManager.getConnection();
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private Connection connection = DBManager.getConnection();
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
 
     public abstract String insertStatement();
     public abstract String selectSingleStatement();
