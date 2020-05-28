@@ -14,7 +14,7 @@
     <h2>Choose customer for new order - or create a new one</h2>
     <button onclick="window.location.href='/order/new/createCustomer'" style="color: white; background-color: cadetblue;">Add new customer</button>
 
-    <form action="#" th:action="@{/order/pickcustomer}" th:object="${order}" method="post">
+    <form action="#" th:action="@{/order/pickcustomer}" th:object="${customer}" method="post">
         <h2>Extras that are currently available</h2>
         <table>
             <thead>
@@ -28,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="customer: ${customers}">
+            <tr th:each="customer: ${allCustomers}">
                 <!--/*@thymesVar id="studentId" type=""*/-->
                 <td th:text="${customer.id}"></td>
                 <td th:text="${customer.firstname}"></td>
@@ -36,7 +36,7 @@
                 <td th:text="${customer.phone}"></td>
                 <td th:text="${customer.email}"></td>
                 <td>
-                <input type="radio" th:field="*{customerId}" th:value="${customer.id}" />
+                <input type="radio" th:field="*{id}" th:value="${customer.id}" />
                 </td>
 <!--                <td><input type="submit" th:field="*{customerId}" th:value="${customer.id}" /> </td>-->
             </tr>

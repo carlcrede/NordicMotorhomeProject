@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class OrderController {
@@ -22,43 +25,51 @@ public class OrderController {
     ProductUC motorhomeController = new ProductUC(new DataFacadeImpl(new MotorhomeMapper()));
     ProductUC extraController = new ProductUC(new DataFacadeImpl(new ExtraMapper()));
     CustomerUC getCustomerController = new CustomerUC(new DataFacadeImpl(new CustomerMapper()));
-
-    Order order = new Order();
+    Order order;
 
     @GetMapping("/order")
     public String index(Model model) {
+        order = new Order();
         model.addAttribute("orders", orderController.readAll());
         return "/order/index";
     }
 
     @GetMapping("/order/new")
     public String create(Model model) {
+//        model.addAttribute("orderline", new Orderline());
+//        model.addAttribute("order", order);
         model.addAttribute("cart", new Cart());
-        model.addAttribute("motorhomes", motorhomeController.readAvailable());
-        model.addAttribute("extras", extraController.readAvailable());
+        model.addAttribute("allMotorhomes", motorhomeController.readAvailable());
+        model.addAttribute("allExtras", extraController.readAvailable());
         return "order/new";
     }
 
     @PostMapping("/order/new")
     public String create(@ModelAttribute("cart") Cart cart){
         ArrayList<Integer> products = cart.getProducts();
-        for(Integer product : products){
-            Orderline orderline = new Orderline(product);
-            order.addOrderline(orderline);
+        ArrayList<Integer> quantitites = cart.getQuant();
+        for(int i = 0; i < products.size(); i++){
+            if(quantitites.get(i) != null) {
+                {
+                    int product_id = products.get(i);
+                    int quantity = quantitites.get(i);
+                    order.addOrderline(new Orderline(product_id, quantity));
+                }
+            }
         }
         return "redirect:/order/pickcustomer";
     }
 
     @GetMapping("/order/pickcustomer")
     public String customer(Model model){
-        model.addAttribute("order", order);
-        model.addAttribute("customers", getCustomerController.readAll());
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("allCustomers", getCustomerController.readAll());
         return "/order/pickcustomer";
     }
 
     @PostMapping("/order/pickcustomer")
-    public String customer(@ModelAttribute("order") Order placeholder){
-        order.setCustomerId(placeholder.getCustomerId());
+    public String customer(@ModelAttribute("customer") Customer customer){
+        order.setCustomerId(customer.getId());
         orderController.create(order);
         int order_id = orderController.readLastInsertID();
         ArrayList<Orderline> orderlines = order.getOrderlines();

@@ -2,6 +2,8 @@ package com.nmr.nmp.domain.models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Order extends DomainEntity {
 
@@ -10,7 +12,7 @@ public class Order extends DomainEntity {
     private String startDate, returnDate, status;
     private LocalDateTime orderDate;
 
-    private ArrayList<Orderline> orderlines = new ArrayList();
+    private ArrayList<Orderline> orderlines = new ArrayList<>();
 
     public Order(){
     }
@@ -83,10 +85,6 @@ public class Order extends DomainEntity {
         this.status = status;
     }
 
-    public void addOrderline(Orderline orderline){
-        orderlines.add(orderline);
-    }
-
     public ArrayList<Orderline> getOrderlines() {
         return orderlines;
     }
@@ -94,4 +92,9 @@ public class Order extends DomainEntity {
     public void setOrderlines(ArrayList<Orderline> orderlines) {
         this.orderlines = orderlines;
     }
+
+    public void addOrderline(Orderline orderline){
+        orderlines.add(orderline);
+    }
+
 }
