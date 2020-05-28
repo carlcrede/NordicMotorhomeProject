@@ -27,6 +27,8 @@ public class OrderController {
     ProductUC motorhomeController = new ProductUC(new DataFacadeImpl(new MotorhomeMapper()));
     ProductUC extraController = new ProductUC(new DataFacadeImpl(new ExtraMapper()));
 
+    Order order = new Order();
+
     @GetMapping("/order")
     public String index(Model model) {
         model.addAttribute("orders", controller.readAll());
@@ -35,30 +37,48 @@ public class OrderController {
 
     @GetMapping("/order/new")
     public String create(Model model) {
-//        model.addAttribute("order", new Order());
-//        model.addAttribute("product_id", new String());
         model.addAttribute("orderline", new Orderline());
-        model.addAttribute("orderlineslist", new ArrayList<Orderline>());
-        model.addAttribute("motor", new Motorhome());
         model.addAttribute("motorhomes", motorhomeController.readAvailable());
-//        model.addAttribute("singleextra", new Extra());
-////        model.addAttribute("extras", extraController.readAvailable());
-
-//        model.addAttribute("extras", extraController.readAvailable());
         return "order/new";
     }
 
     @PostMapping("/order/new")
-    public String create(@ModelAttribute("motorhome") Motorhome motorhome){
-        ArrayList<Orderline> orderlineslist = new ArrayList();
-        Orderline orderline = new Orderline();
-        orderline.setProductId(motorhome.getId());
-        orderlineslist.add(orderline);
-        Order order = new Order();
-        order.setOrderlines(orderlineslist);
-        return "redirect:/order";
+    public String create(@ModelAttribute("orderline") Orderline orderline){
+        order.addOrderline(orderline);
+        return "redirect:/order/new/extra";
     }
 
+    @GetMapping("/order/new/extra")
+    public String extra(Model model) {
+        model.addAttribute("orderline2", new Orderline());
+        model.addAttribute("extras", extraController.readAvailable());
+        return "/order/extra";
+    }
+
+    @PostMapping("/order/new/extra")
+    public String extra(@ModelAttribute("orderline2") Orderline orderline) {
+        order.addOrderline(orderline);
+        return "redirect:/order/new/customer";
+    }
+
+    @GetMapping("/order/new/customer")
+    public String customer(Model model) {
+        model.addAttribute("_customer", new Customer());
+        model.addAttribute("customers", customerController.readAll());
+        return "/order/customer";
+    }
+
+    @PostMapping("order/new/customer")
+    public String customer(@ModelAttribute("_customer") Customer customer) {
+        order.setCustomerId(customer.getId());
+        return "redirect:/order/new/review";
+    }
+
+    @GetMapping("/order/new/review")
+    public String review(Model model) {
+        model.addAttribute("order", order);
+        return "/order/review";
+    }
 
 //    @GetMapping("/order/createCustomer")
 //    public String createCustomer(Model model){

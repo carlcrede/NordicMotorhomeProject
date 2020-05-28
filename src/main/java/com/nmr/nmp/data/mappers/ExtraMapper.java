@@ -28,7 +28,7 @@ public class ExtraMapper extends DataMapper{
 
     @Override
     public String selectAvailableStatement() {
-        return "SELECT product_id, type, brand, model, stock FROM products WHERE category='extra' AND stock > 0 ORDER BY type";
+        return "SELECT product_id, type, price, brand, model, stock FROM products WHERE category='extra' AND stock > 0 ORDER BY type";
     }
 
     @Override

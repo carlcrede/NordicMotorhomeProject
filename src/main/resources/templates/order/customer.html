@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>New order - customer</title>
+</head>
+<body>
+<div th:insert="navbar.html"></div>
+<div class="container">
+    <h1>Choose existing customer or add new</h1>
+    <p>All customers in the system</p>
+    <anm_btn><a href="/order/createCustomer" class="btn btn-create" style="color: white">New customer <i class="fa fa-plus-square-o"></i></a></anm_btn>
+    <form th:action="@{/order/new/customer}" action="#" th:object="${_customer}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Customer Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer: ${customers}">
+            <!--/*@thymesVar id="studentId" type=""*/-->
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.firstname}"></td>
+            <td th:text="${customer.lastname}"></td>
+            <td th:text="${customer.phone}"></td>
+            <td th:text="${customer.email}"></td>
+            <td><input type="radio" th:field="*{id}" th:value="${customer.id}" name="selectedCustomer" required/> </td>
+        </tr>
+        </tbody>
+    </table>
+        <input type="submit" value="Next"/>
+    </form>
+    <cncl_btn><a href="/order" class="btn btn-cancelbtn" >Cancel <i class="fa fa-plus-square-o"></i></a></cncl_btn>
+</div>
+</body>
+<footer th:insert="footer"></footer>
+</html>

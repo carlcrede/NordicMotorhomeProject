@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>New order - choose motorhome</title>
+    <title>New order - choose extras</title>
 
 </head>
 <body>
@@ -12,10 +12,11 @@
 <div class="container">
     <h1>Product selection</h1>
 
-    <button type="button" class="collapsible">Motorhome    <i class="fa fa-arrows-v"></i></button>
+
+    <button type="button" class="collapsible">Extras    <i class="fa fa-arrows-v"></i></button>
     <div class="content">
-        <form action="#" th:action="@{/order/new}" th:object="${orderline}" method="post">
-            <p>Motorhomes that are currently available</p>
+        <form action="#" th:action="@{/order/new/extra}" th:object="${orderline2}" method="post">
+            <p>Extras that are currently available</p>
             <table>
                 <thead>
                 <tr>
@@ -27,19 +28,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="motorhome: ${motorhomes}">
-                    <td th:text="${motorhome.type}"></td>
-                    <td th:text="${motorhome.brand}"></td>
-                    <td th:text="${motorhome.model}"></td>
-                    <td th:text="${motorhome.price}"></td>
+                <tr th:each="extra: ${extras}">
+                    <td th:text="${extra.type}"></td>
+                    <td th:text="${extra.brand}"></td>
+                    <td th:text="${extra.model}"></td>
+                    <td th:text="${extra.price}"></td>
                     <!--            <input type="hidden" th:value="${motorhome.id}"/>-->
-                    <td><input type="radio" th:field="*{productId}" th:value="${motorhome.id}" name="selectedMotorhome" required/> </td>
+                    <td><input type="radio" th:field="*{productId}" th:value="${extra.id}" name="selectedMotorhome" required/> </td>
                 </tr>
                 </tbody>
             </table>
             <input type="submit" value="Next">
         </form>
     </div>
+
 
 </div>
 

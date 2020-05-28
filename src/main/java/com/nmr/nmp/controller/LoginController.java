@@ -20,9 +20,10 @@ public class LoginController {
 
     @GetMapping("/")
     public String index(HttpSession session) {
-        if (session.getAttribute("user") != null) {
+        if (session.getAttribute("user.username") != null || session.getAttribute("role") != null) {
             return "login/user";
         } else {
+            session.invalidate();
             return "login/index";
         }
     }
