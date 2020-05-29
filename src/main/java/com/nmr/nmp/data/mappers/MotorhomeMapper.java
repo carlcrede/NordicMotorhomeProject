@@ -56,7 +56,7 @@ public class MotorhomeMapper extends DataMapper {
     }
 
     @Override
-    public DomainEntity loadEntity(ResultSet rs){
+    public DomainEntity loadEntity(ResultSet rs) {
         try {
             int id = rs.getInt("product_id");
             String type = rs.getString("type");
@@ -65,7 +65,7 @@ public class MotorhomeMapper extends DataMapper {
             String brand = rs.getString("brand");
             String status = rs.getString("status");
             return new Motorhome(id, type, price, brand, model, status);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
