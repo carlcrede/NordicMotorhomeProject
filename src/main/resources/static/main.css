@@ -210,6 +210,20 @@ img.avatar {
     width: 30%;
 }
 
+wrongLoginBox {
+
+}
+
+.frontpageContainer {
+    background-color: #8a5151;
+    color: antiquewhite;
+    opacity: 65%;
+    height: 100%;
+    width: 60%;
+    margin-top: 16px;
+    margin-left: 17%
+}
+
 span.psw {
     float: right;
     padding-top: 16px;
