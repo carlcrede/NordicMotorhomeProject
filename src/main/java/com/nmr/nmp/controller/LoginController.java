@@ -1,6 +1,7 @@
 package com.nmr.nmp.controller;
 
 import com.nmr.nmp.data.implementations.LoginFacadeImpl;
+import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;
 import com.nmr.nmp.domain.handlers.LoginHandler;
 import com.nmr.nmp.domain.models.User;
@@ -32,7 +33,7 @@ public class LoginController extends ExceptionController {
     }
 
     @PostMapping("/login")
-    public String login(HttpServletRequest request) throws LoginException {
+    public String login(HttpServletRequest request) throws LoginException, DatabaseException {
         String username = request.getParameter("uname");
         String pass = request.getParameter("psw");
         User user = loginController.login(username, PasswordEncoder.encode(pass));

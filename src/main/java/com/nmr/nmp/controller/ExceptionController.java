@@ -1,5 +1,6 @@
 package com.nmr.nmp.controller;
 
+import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +10,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionController {
 
     @ExceptionHandler(LoginException.class)
-    public String anotherError(Model model, Exception exception) {
+    public String loginError(Model model, Exception exception) {
         model.addAttribute("message",exception.getMessage());
         return "/login/index";
+    }
+
+    @ExceptionHandler(DatabaseException.class)
+    public String sqlError(Model model, Exception exception) {
+        model.addAttribute("exception", exception);
+        return "/error/index";
     }
 }

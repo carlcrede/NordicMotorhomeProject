@@ -1,6 +1,7 @@
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.data.DBManager;
+import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;
 import com.nmr.nmp.domain.models.User;
 import java.sql.Connection;
@@ -14,7 +15,7 @@ public class UserMapper {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public User login(String username, String password) throws LoginException {
+    public User login(String username, String password) throws LoginException, DatabaseException {
         try {
             String sql = "SELECT * FROM users WHERE username=? AND pass=?";
             ps = connection.prepareStatement(sql);
@@ -31,11 +32,10 @@ public class UserMapper {
                 throw new LoginException("Wrong username or password.");
             }
         } catch (SQLException e) {
-            e.getMessage();
+            throw new DatabaseException(e.getMessage(), "Database error. Please contact system admin.");
         } finally {
             if (ps != null) { try { ps.close(); } catch (SQLException e) { e.printStackTrace(); } }
             if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
         }
-        return new User();
     }
 }

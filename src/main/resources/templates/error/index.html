@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+</head>
+<body>
+<div class="container">
+    <h1>An error has occured</h1>
+    <h2 th:text="${exception.message}" th:unless="${exception.message == null}"></h2>
+    <h2>Reason: (please report reason to system admin)</h2>
+    <p th:text="${exception.reason}"></p>
+</div>
+</body>
+</html>
