@@ -2,7 +2,7 @@ package com.nmr.nmp.controller;
 
 import com.nmr.nmp.data.implementations.LoginFacadeImpl;
 import com.nmr.nmp.domain.models.User;
-import com.nmr.nmp.domain.uccontrollers.LoginUC;
+import com.nmr.nmp.domain.handlers.LoginHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import java.security.NoSuchAlgorithmException;
 @Controller
 public class LoginController {
 
-    LoginUC loginController = new LoginUC(new LoginFacadeImpl());
+    LoginHandler loginController = new LoginHandler(new LoginFacadeImpl());
 
     @GetMapping("/")
     public String index(HttpSession session) {

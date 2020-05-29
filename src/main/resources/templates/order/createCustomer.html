@@ -15,9 +15,8 @@
         <p>Last name: <input type="text" th:field="*{lastname}" required/></p>
         <p>Phone: <input type="text" th:field="*{phone}" required/></p>
         <p>Email: <input type="text" th:field="*{email}" required/></p>
-        <input type="submit" value="Add" class="btn btn-create"/>
+        <input type="submit" value="Add" th:href="@{/order/createOrder(id=${customer.id})}" />
         <br/><br/>
-        <input type="button" onclick="window.location.href = '/order/create';" value="Cancel" class="btn btn-del"/>
     </form>
 </div>
 </body>

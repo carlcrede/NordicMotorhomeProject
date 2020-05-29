@@ -3,7 +3,7 @@ package com.nmr.nmp.controller;
 import com.nmr.nmp.data.implementations.DataFacadeImpl;
 import com.nmr.nmp.data.mappers.ExtraMapper;
 import com.nmr.nmp.domain.models.Extra;
-import com.nmr.nmp.domain.uccontrollers.ProductUC;
+import com.nmr.nmp.domain.handlers.ProductHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ExtraController {
 
-    ProductUC controller = new ProductUC(new DataFacadeImpl(new ExtraMapper()));
+    ProductHandler controller = new ProductHandler(new DataFacadeImpl(new ExtraMapper()));
 
     @GetMapping("/extra")
     public String index(Model model) {

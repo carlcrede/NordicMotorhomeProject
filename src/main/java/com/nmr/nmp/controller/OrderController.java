@@ -3,28 +3,26 @@ package com.nmr.nmp.controller;
 import com.nmr.nmp.data.implementations.DataFacadeImpl;
 import com.nmr.nmp.data.mappers.*;
 import com.nmr.nmp.domain.models.*;
-import com.nmr.nmp.domain.uccontrollers.CustomerUC;
-import com.nmr.nmp.domain.uccontrollers.OrderUC;
-import com.nmr.nmp.domain.uccontrollers.ProductUC;
+import com.nmr.nmp.domain.handlers.CustomerHandler;
+import com.nmr.nmp.domain.handlers.OrderHandler;
+import com.nmr.nmp.domain.handlers.ProductHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class OrderController {
 
-    OrderUC orderController = new OrderUC(new DataFacadeImpl(new OrderMapper()));
-    OrderUC orderlineController = new OrderUC(new DataFacadeImpl(new OrderlineMapper()));
-    ProductUC motorhomeController = new ProductUC(new DataFacadeImpl(new MotorhomeMapper()));
-    ProductUC extraController = new ProductUC(new DataFacadeImpl(new ExtraMapper()));
-    CustomerUC getCustomerController = new CustomerUC(new DataFacadeImpl(new CustomerMapper()));
+    OrderHandler orderController = new OrderHandler(new DataFacadeImpl(new OrderMapper()));
+    OrderHandler orderlineController = new OrderHandler(new DataFacadeImpl(new OrderlineMapper()));
+    ProductHandler motorhomeController = new ProductHandler(new DataFacadeImpl(new MotorhomeMapper()));
+    ProductHandler extraController = new ProductHandler(new DataFacadeImpl(new ExtraMapper()));
+    CustomerHandler customerController = new CustomerHandler(new DataFacadeImpl(new CustomerMapper()));
     Order order;
 
     @GetMapping("/order")
@@ -35,7 +33,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/new")
-    public String create(Model model) {
+    public String newOrder(Model model) {
         model.addAttribute("cart", new Cart());
         model.addAttribute("allMotorhomes", motorhomeController.readAvailable());
         model.addAttribute("allExtras", extraController.readAvailable());
@@ -43,7 +41,7 @@ public class OrderController {
     }
 
     @PostMapping("/order/new")
-    public String create(@ModelAttribute("cart") Cart cart){
+    public String newOrder(@ModelAttribute("cart") Cart cart){
         ArrayList<Integer> products = cart.getProducts();
         for(int i = 0; i < products.size(); i++){
             int product_id = products.get(i);
@@ -53,14 +51,14 @@ public class OrderController {
     }
 
     @GetMapping("/order/pickcustomer")
-    public String customer(Model model){
+    public String pickCustomer(Model model){
         model.addAttribute("customer", new Customer());
-        model.addAttribute("allCustomers", getCustomerController.readAll());
+        model.addAttribute("allCustomers", customerController.readAll());
         return "/order/pickcustomer";
     }
 
     @PostMapping("/order/pickcustomer")
-    public String customer(@ModelAttribute("customer") Customer customer){
+    public String pickCustomer(@ModelAttribute("customer") Customer customer){
         order.setCustomerId(customer.getId());
         orderController.create(order);
         int order_id = orderController.readLastInsertID();
@@ -72,24 +70,26 @@ public class OrderController {
         return "redirect:/order";
     }
 
-//    @GetMapping("/order/createCustomer")
-//    public String createCustomer(Model model){
-//        model.addAttribute("customer", new Customer());
-//        return "/order/createCustomer";
-//    }
-//
-//    @PostMapping("/order/createCustomer")
-//    public String createCustomer(HttpServletRequest request){
-//        String firstname = request.getParameter("firstname");
-//        String lastname = request.getParameter("lastname");
-//        String phone = request.getParameter("phone");
-//        String email = request.getParameter("email");
-//        Customer customer = new Customer(firstname, lastname, phone, email);
-//        customerController.create(customer);
-//        ArrayList<DomainEntity> customers = customerController.readAll();
-//        int customerId = customers.get(customers.size() - 1).getId();
-//        return "redirect:/order/createOrder" + "?id=" + customerId;
-//    }
+    @GetMapping("/order/createCustomer")
+    public String createCustomer(Model model){
+        model.addAttribute("customer", new Customer());
+        return "/order/createCustomer";
+    }
+
+    @PostMapping("/order/createCustomer")
+    public String createCustomer(@ModelAttribute("customer") Customer customer){
+        customerController.create(customer);
+        order.setCustomerId(customerController.readLastInsertID());
+        orderController.create(order);
+        int order_id = orderController.readLastInsertID();
+        ArrayList<Orderline> orderlines = order.getOrderlines();
+        for(Orderline orderline : orderlines){
+            orderline.setOrderId(order_id);
+            orderlineController.create(orderline);
+        }
+        return "redirect:/order";
+    }
+
 //
 //    @GetMapping("/order/createOrder")
 //    public String createOrder(Model model, @RequestParam("id") int customerId){

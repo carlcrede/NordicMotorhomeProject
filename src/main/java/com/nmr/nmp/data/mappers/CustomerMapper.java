@@ -42,7 +42,7 @@ public class CustomerMapper extends DataMapper{
 
     @Override
     public String selectLastInsertID() {
-        return null;
+        return "SELECT MAX(customer_id) FROM customers";
     }
 
     @Override
@@ -71,6 +71,11 @@ public class CustomerMapper extends DataMapper{
 
     @Override
     public int loadLastInsertID(ResultSet resultSet) {
+        try {
+            return resultSet.getInt("MAX(customer_id)");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return 0;
     }
 

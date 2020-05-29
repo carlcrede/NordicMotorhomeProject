@@ -12,7 +12,7 @@
 <div class="container">
     <h1>All customers in the system</h1>
     <h2>Choose customer for new order - or create a new one</h2>
-    <button onclick="window.location.href='/order/new/createCustomer'" style="color: white; background-color: cadetblue;">Add new customer</button>
+    <button onclick="window.location.href='/order/createCustomer'" style="color: white; background-color: cadetblue; width: 25%; align: right;">Add new customer</button>
 
     <form action="#" th:action="@{/order/pickcustomer}" th:object="${customer}" method="post">
         <h2>Extras that are currently available</h2>
@@ -42,8 +42,8 @@
             </tr>
             </tbody>
         </table>
-        <button onclick="window.location.href='/order'" style="width: 49.5%;" type="submit" value="Next">Next</button>
-        <button href="/order" style="width: 49.5%; background-color: #FF0000">Cancel</button>
+        <button href="/order" style="width: 25%; align: left; background-color: #FF0000">Cancel</button>
+        <button type="submit" onclick="window.location.href='/order/pickcustomer'" style="width: 25%; align: right" value="Confirm">Confirm</button>
     </form>
 </div>
 </body>
