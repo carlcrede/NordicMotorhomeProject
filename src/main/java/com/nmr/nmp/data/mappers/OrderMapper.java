@@ -8,8 +8,8 @@ public class OrderMapper extends DataMapper {
 
     @Override
     public String insertStatement() {
-        return "INSERT INTO orders (customer_id, startDate, returnDate, orderStatus)" +
-                "VALUES (?, ?, ?, ?)";
+        return "INSERT INTO orders (customer_id, startDate, returnDate)" +
+                "VALUES (?, ?, ?)";
     }
 
     @Override
@@ -51,7 +51,6 @@ public class OrderMapper extends DataMapper {
             ps.setInt(1, order.getCustomerId());
             ps.setString(2, order.getStartDate());
             ps.setString(3, order.getReturnDate());
-            ps.setString(4, order.getStatus());
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
