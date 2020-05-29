@@ -204,6 +204,12 @@ img.avatar {
     width: 75%;
 }
 
+.loginContainer {
+    padding: 36px;
+    margin-left: 32%;
+    width: 30%;
+}
+
 span.psw {
     float: right;
     padding-top: 16px;
