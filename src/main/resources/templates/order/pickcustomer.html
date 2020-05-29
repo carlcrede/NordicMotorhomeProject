@@ -15,7 +15,7 @@
     <button onclick="window.location.href='/order/createCustomer'" align="right" style="color: white; background-color: cadetblue; width: 25%">Add new customer</button>
 
     <form action="#" th:action="@{/order/pickcustomer}" th:object="${customer}" method="post">
-        <h2>Extras that are currently available</h2>
+        <h2>Existing customers</h2>
         <table>
             <thead>
             <tr>
@@ -36,14 +36,14 @@
                 <td th:text="${customer.phone}"></td>
                 <td th:text="${customer.email}"></td>
                 <td>
-                <input type="radio" th:field="*{id}" th:value="${customer.id}" />
+                <input type="radio" th:field="*{id}" th:value="${customer.id}" required />
                 </td>
 <!--                <td><input type="submit" th:field="*{customerId}" th:value="${customer.id}" /> </td>-->
             </tr>
             </tbody>
         </table>
         <button href="/order" align="left" style="width: 25%; background-color: #FF0000">Cancel</button>
-        <button type="submit" onclick="window.location.href='/order/pickcustomer'" align="right" style="width: 25%" value="Confirm">Confirm</button>
+        <button type="submit" onclick="window.location.href='/order/pickcustomer'" align="right" style="width: 25%; margin-left: 49.5%;" value="Confirm">Confirm</button>
     </form>
 </div>
 </body>

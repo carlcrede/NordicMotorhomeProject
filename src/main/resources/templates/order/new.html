@@ -28,7 +28,7 @@
                 <td th:text="${motorhome.brand}"></td>
                 <td th:text="${motorhome.model}"></td>
                 <td th:text="${motorhome.price}"></td>
-                <td><input type="radio" th:field="*{products}" th:value="${motorhome.id}" /> </td>
+                <td><input type="radio" th:field="*{products}" th:value="${motorhome.id}" required /> </td>
             </tr>
             </tbody>
         </table><br />
@@ -54,7 +54,7 @@
             </tr>
             </tbody>
         </table>
-        <button type="submit" align="right" value="Next" style="width: 25%;">Next</button>
+        <button type="submit" align="right" value="Next" style="width: 25%; margin-left: 75%;">Next</button>
     </form><br />
 </div>
 </body>

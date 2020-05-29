@@ -20,7 +20,7 @@
             <th>Customer Id</th>
             <th>Order date</th>
             <th>Order status</th>
-            <th></th>
+<!--            <th></th>-->
         </tr>
         </thead>
         <tbody>
@@ -30,11 +30,11 @@
             <td th:text="${order.customerId}"></td>
             <td th:text="${#temporals.format(order.orderDate, 'dd-MM-yyyy HH:mm:ss')}"></td>
             <td th:text="${order.status}"></td>
-            <td>
+<!--            <td>-->
 <!--                <a th:href="@{/motorhome/details(id=${motorhome.id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> &lt;!&ndash; http://www.thymeleaf.org/doc/articles/standardurlsyntax.html &ndash;&gt;-->
 <!--                <a th:href="@{/motorhome/edit(id=${motorhome.id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>-->
 <!--                <a th:href="@{/motorhome/delete(id=${motorhome.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>-->
-            </td>
+<!--            </td>-->
         </tr>
         </tbody>
     </table>
