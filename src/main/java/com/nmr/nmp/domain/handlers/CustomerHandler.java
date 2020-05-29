@@ -1,15 +1,15 @@
-package com.nmr.nmp.domain.uccontrollers;
+package com.nmr.nmp.domain.handlers;
 
 import com.nmr.nmp.domain.IDataFacade;
 import com.nmr.nmp.domain.models.DomainEntity;
 
 import java.util.ArrayList;
 
-public class ProductUC {
+public class CustomerHandler {
 
     private IDataFacade dataFacade;
 
-    public ProductUC(IDataFacade dataFacade) { this.dataFacade = dataFacade; }
+    public CustomerHandler(IDataFacade dataFacade) { this.dataFacade = dataFacade; }
 
     public void create(DomainEntity domainEntity) {
         dataFacade.create(domainEntity);
@@ -19,12 +19,12 @@ public class ProductUC {
         return dataFacade.read(id);
     }
 
-    public ArrayList<DomainEntity> readAll() {
-        return dataFacade.readAll();
+    public int readLastInsertID(){
+        return dataFacade.readLastInsertID();
     }
 
-    public ArrayList<DomainEntity> readAvailable() {
-        return dataFacade.readAvailable();
+    public ArrayList<DomainEntity> readAll() {
+        return dataFacade.readAll();
     }
 
     public void update(DomainEntity domainEntity) {

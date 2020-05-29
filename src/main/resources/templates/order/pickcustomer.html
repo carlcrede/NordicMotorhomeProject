@@ -10,11 +10,12 @@
 <div th:insert="navbar.html"></div>
 
 <div class="container">
-    <anm_btn><a href="/order/new/createCustomer" class="btn btn-create" style="color: white">Add new customer <i class="fa fa-plus-square-o"></i></a></anm_btn>
     <h1>All customers in the system</h1>
-    <p>Choose customer for new order</p>
-    <form action="#" th:action="@{/order/pickcustomer}" th:object="${order}" method="post">
-        <p>Extras that are currently available</p>
+    <h2>Choose customer for new order - or create a new one</h2>
+    <button onclick="window.location.href='/order/createCustomer'" align="right" style="color: white; background-color: cadetblue; width: 25%">Add new customer</button>
+
+    <form action="#" th:action="@{/order/pickcustomer}" th:object="${customer}" method="post">
+        <h2>Extras that are currently available</h2>
         <table>
             <thead>
             <tr>
@@ -27,7 +28,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="customer: ${customers}">
+            <tr th:each="customer: ${allCustomers}">
                 <!--/*@thymesVar id="studentId" type=""*/-->
                 <td th:text="${customer.id}"></td>
                 <td th:text="${customer.firstname}"></td>
@@ -35,14 +36,14 @@
                 <td th:text="${customer.phone}"></td>
                 <td th:text="${customer.email}"></td>
                 <td>
-                <input type="radio" th:field="*{customerId}" th:value="${customer.id}" />
+                <input type="radio" th:field="*{id}" th:value="${customer.id}" />
                 </td>
 <!--                <td><input type="submit" th:field="*{customerId}" th:value="${customer.id}" /> </td>-->
             </tr>
             </tbody>
         </table>
-        <input type="submit" value="Next">
-        <cncl_btn><a href="/order" class="btn btn-cancelbtn" >Cancel <i class="fa fa-plus-square-o"></i></a></cncl_btn>
+        <button href="/order" align="left" style="width: 25%; background-color: #FF0000">Cancel</button>
+        <button type="submit" onclick="window.location.href='/order/pickcustomer'" align="right" style="width: 25%" value="Confirm">Confirm</button>
     </form>
 </div>
 </body>
