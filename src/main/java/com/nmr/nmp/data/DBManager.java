@@ -15,7 +15,11 @@ public class DBManager {
     private static Connection connection = null;
 
     public static Connection getConnection() {
-        if (connection != null) return connection;
+        try {
+            if (connection != null && !connection.isClosed()) return connection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         try (InputStream input = new FileInputStream("src/main/resources/application.properties")) {
             Properties properties = new Properties();
             properties.load(input);

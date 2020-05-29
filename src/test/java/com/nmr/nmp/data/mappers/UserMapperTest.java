@@ -5,6 +5,7 @@ import com.nmr.nmp.domain.exceptions.LoginException;
 import com.nmr.nmp.domain.models.User;
 import com.nmr.nmp.utility.PasswordEncoder;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -18,7 +19,7 @@ class UserMapperTest {
     UserMapper userMapper;
     User user;
 
-    @BeforeAll
+    @BeforeEach
     void init(){
         userMapper = new UserMapper();
         user = new User();
@@ -87,6 +88,12 @@ class UserMapperTest {
 
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    void invalidLoginExceptionTest(){
+        Exception exception = assertThrows(LoginException.class, () -> userMapper.login("test", "test"));
+        assertEquals("Wrong username or password.", exception.getMessage());
     }
 
 }
