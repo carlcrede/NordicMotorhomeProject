@@ -15,12 +15,13 @@
     <h1 align="center">Welcome to Nordic Motorhome Rentals!</h1>
 
     <form action="#" th:action="@{/login}" method="post">
-        <div class="container" align="center" style="padding-bottom: 16px">
+        <div class="container" align="center" style="padding-bottom: 0px">
             <img src="/images/Mountain.png" alt="Logo">
         </div>
 
         <div class="loginContainer">
-            <div><p th:text="${message}" th:unless="${message == null}"></p> </div>
+            <div><p style="background-color: red;color: white;height: 30px;padding-top: 10px;;" align="center" th:text="${message}" th:unless="${message == null}"></p> </div>
+            <br>
             <label for="uname"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="uname" required>
 
