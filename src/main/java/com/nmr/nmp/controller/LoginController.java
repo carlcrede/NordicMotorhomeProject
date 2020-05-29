@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 @Controller
@@ -35,35 +33,16 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(HttpServletRequest request) throws NoSuchAlgorithmException {
+    public String login(HttpServletRequest request) {
         String username = request.getParameter("uname");
         String pass = request.getParameter("psw");
-
-        // move to method - utility pakke -
-//        // TODO: move to another class or method
-//        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-//        byte[] encodedHash = messageDigest.digest(pass.getBytes(StandardCharsets.UTF_8));
-//        String passString = bytesToHex(encodedHash);
-
         User user = loginController.login(username, PasswordEncoder.encode(pass));
-
         if (user.getRole() == null) {
             return "redirect:/";
         }
-
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         session.setAttribute("role", user.getRole());
         return "redirect:/";
-    }
-
-    private String bytesToHex(byte[] hash) {
-        StringBuffer hexString = new StringBuffer();
-        for (int i = 0; i < hash.length; i++) {
-            String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
-        }
-        return hexString.toString();
     }
 }
