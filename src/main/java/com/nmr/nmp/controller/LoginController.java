@@ -3,6 +3,7 @@ package com.nmr.nmp.controller;
 import com.nmr.nmp.data.implementations.LoginFacadeImpl;
 import com.nmr.nmp.domain.models.User;
 import com.nmr.nmp.domain.uccontrollers.LoginUC;
+import com.nmr.nmp.utility.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,12 +39,18 @@ public class LoginController {
         String username = request.getParameter("uname");
         String pass = request.getParameter("psw");
 
-        // TODO: move to another class or method
-        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-        byte[] encodedHash = messageDigest.digest(pass.getBytes(StandardCharsets.UTF_8));
-        String passString = bytesToHex(encodedHash);
+        // move to method - utility pakke -
+//        // TODO: move to another class or method
+//        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+//        byte[] encodedHash = messageDigest.digest(pass.getBytes(StandardCharsets.UTF_8));
+//        String passString = bytesToHex(encodedHash);
 
-        User user = loginController.login(username, passString);
+        User user = loginController.login(username, PasswordEncoder.encode(pass));
+
+        if (user.getRole() == null) {
+            return "redirect:/";
+        }
+
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         session.setAttribute("role", user.getRole());
