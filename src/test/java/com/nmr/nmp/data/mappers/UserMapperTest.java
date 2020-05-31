@@ -1,6 +1,7 @@
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.data.DBManager;
+import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;
 import com.nmr.nmp.domain.models.User;
 import com.nmr.nmp.utility.PasswordEncoder;
@@ -31,7 +32,7 @@ class UserMapperTest {
 
         try {
             user = userMapper.login("jd1234", PasswordEncoder.encode("MitKodeord123!"));
-        } catch (LoginException e) {
+        } catch (LoginException | DatabaseException e) {
             e.printStackTrace();
         }
 
@@ -48,7 +49,7 @@ class UserMapperTest {
 
         try {
             user = userMapper.login("jd1234", PasswordEncoder.encode("MitKodeord123!"));
-        } catch (LoginException e) {
+        } catch (LoginException | DatabaseException e) {
             e.printStackTrace();
         }
 
@@ -64,7 +65,7 @@ class UserMapperTest {
 
         try {
             user = userMapper.login("jd1234", PasswordEncoder.encode("MitKodeord123!"));
-        } catch (LoginException e) {
+        } catch (LoginException | DatabaseException e) {
             e.printStackTrace();
         }
 
@@ -80,7 +81,7 @@ class UserMapperTest {
 
         try {
             user = userMapper.login("jd1234", PasswordEncoder.encode("MitKodeord123!"));
-        } catch (LoginException e) {
+        } catch (LoginException | DatabaseException e) {
             e.printStackTrace();
         }
 
