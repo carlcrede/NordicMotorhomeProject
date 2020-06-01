@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MotorhomeController {
 
-    ProductHandler controller = new ProductHandler(new DataFacadeImpl(new MotorhomeMapper()));
+    ProductHandler handler = new ProductHandler(new DataFacadeImpl(new MotorhomeMapper()));
 
     @GetMapping("/motorhome")
     public String index(Model model) {
-        model.addAttribute("motorhomes", controller.readAll());
+        model.addAttribute("motorhomes", handler.readAll());
         return "/motorhome/index";
     }
 
@@ -32,38 +32,38 @@ public class MotorhomeController {
 
     @PostMapping("/motorhome/create")
     public String create(@ModelAttribute("motorhome") Motorhome motorhome) {
-        controller.create(motorhome);
+        handler.create(motorhome);
         return "redirect:/motorhome";
     }
 
     @GetMapping("/motorhome/details")
     public String details(@RequestParam("id") int id, Model model) {
-        model.addAttribute("motorhome", controller.read(id));
+        model.addAttribute("motorhome", handler.read(id));
         return "/motorhome/details";
     }
 
     @GetMapping("/motorhome/edit")
     public String edit(@RequestParam("id") int id, Model model) {
-        model.addAttribute("motorhome", controller.read(id));
+        model.addAttribute("motorhome", handler.read(id));
         return "/motorhome/edit";
     }
 
     @PostMapping("/motorhome/edit")
     public String update(@ModelAttribute("motorhome") Motorhome motorhome) {
-        controller.update(motorhome);
+        handler.update(motorhome);
         return "redirect:/motorhome";
     }
 
     @GetMapping("/motorhome/delete")
     public String delete(@RequestParam("id") int id, Model model) {
-        model.addAttribute("motorhome", controller.read(id));
+        model.addAttribute("motorhome", handler.read(id));
         return "/motorhome/delete";
     }
 
     @PostMapping("/motorhome/delete")
     public String delete(HttpServletRequest request) {
         String id = request.getParameter("id");
-        controller.delete(Integer.parseInt(id));
+        handler.delete(Integer.parseInt(id));
         return "redirect:/motorhome";
     }
 
