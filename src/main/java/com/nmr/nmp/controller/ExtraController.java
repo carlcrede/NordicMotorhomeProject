@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ExtraController {
 
-    ProductHandler controller = new ProductHandler(new DataFacadeImpl(new ExtraMapper()));
+    ProductHandler handler = new ProductHandler(new DataFacadeImpl(new ExtraMapper()));
 
     @GetMapping("/extra")
     public String index(Model model) {
-        model.addAttribute("extras", controller.readAll());
+        model.addAttribute("extras", handler.readAll());
         return "/extra/index";
     }
 
@@ -37,19 +37,19 @@ public class ExtraController {
         String brand = request.getParameter("brand");
         int stock = Integer.parseInt(request.getParameter("stock"));
         Extra extra = new Extra(type, price, model, brand, stock);
-        controller.create(extra);
+        handler.create(extra);
         return "redirect:/extra";
     }
 
     @GetMapping("/extra/details")
     public String details(@RequestParam("id") int id, Model model) {
-        model.addAttribute("extra", controller.read(id));
+        model.addAttribute("extra", handler.read(id));
         return "/extra/details";
     }
 
     @GetMapping("/extra/edit")
     public String edit(@RequestParam("id") int id, Model model) {
-        model.addAttribute("extra", controller.read(id));
+        model.addAttribute("extra", handler.read(id));
         return "/extra/edit";
     }
 
@@ -62,20 +62,20 @@ public class ExtraController {
         String model = request.getParameter("model");
         int stock  = Integer.parseInt(request.getParameter("stock"));
         Extra extra = new Extra(id, type, price, brand, model, stock);
-        controller.update(extra);
+        handler.update(extra);
         return "redirect:/extra";
     }
 
     @PostMapping("/extra/delete")
     public String delete(HttpServletRequest request) {
         String id = request.getParameter("id");
-        controller.delete(Integer.parseInt(id));
+        handler.delete(Integer.parseInt(id));
         return "redirect:/extra";
     }
 
     @GetMapping("/extra/delete")
     public String delete(@RequestParam("id") int id, Model model) {
-        model.addAttribute("extra", controller.read(id));
+        model.addAttribute("extra", handler.read(id));
         return "/extra/delete";
     }
 

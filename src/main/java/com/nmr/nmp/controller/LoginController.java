@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController extends ExceptionController {
 
-    LoginHandler loginController = new LoginHandler(new LoginFacadeImpl());
+    LoginHandler loginHandler = new LoginHandler(new LoginFacadeImpl());
 
     @GetMapping("/")
     public String index(HttpSession session) {
@@ -36,7 +36,7 @@ public class LoginController extends ExceptionController {
     public String login(HttpServletRequest request) throws LoginException, DatabaseException {
         String username = request.getParameter("uname");
         String pass = request.getParameter("psw");
-        User user = loginController.login(username, PasswordEncoder.encode(pass));
+        User user = loginHandler.login(username, PasswordEncoder.encode(pass));
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         session.setAttribute("role", user.getRole());
