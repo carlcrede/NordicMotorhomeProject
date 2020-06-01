@@ -27,7 +27,7 @@ public abstract class DataMapper {
     public abstract int loadLastInsertID(ResultSet resultSet);
     public abstract void doUpdateInsert(DomainEntity domainEntity, PreparedStatement ps);
 
-    public void create(DomainEntity domainEntity){
+    public final void create(DomainEntity domainEntity){
         try {
             ps = connection.prepareStatement(insertStatement());
             doCreateInsert(domainEntity, ps);
@@ -39,7 +39,7 @@ public abstract class DataMapper {
         }
     }
 
-    public DomainEntity read(int id){
+    public final DomainEntity read(int id){
         try {
             ps = connection.prepareStatement(selectSingleStatement());
             ps.setInt(1, id);
@@ -55,7 +55,7 @@ public abstract class DataMapper {
         return null;
     }
 
-    public int readLastInsertID(){
+    public final int readLastInsertID(){
         try {
             ps = connection.prepareStatement(selectLastInsertID());
             rs = ps.executeQuery();
@@ -68,7 +68,7 @@ public abstract class DataMapper {
         return 0;
     }
 
-    public ArrayList<DomainEntity> readAll(){
+    public final ArrayList<DomainEntity> readAll(){
         ArrayList<DomainEntity> all = new ArrayList<>();
         try {
             ps = connection.prepareStatement(selectAllStatement());
@@ -85,7 +85,7 @@ public abstract class DataMapper {
         return all;
     }
 
-    public ArrayList<DomainEntity> readAvailable(){
+    public final ArrayList<DomainEntity> readAvailable(){
         ArrayList<DomainEntity> available = new ArrayList<>();
         try {
             ps = connection.prepareStatement(selectAvailableStatement());
@@ -101,7 +101,7 @@ public abstract class DataMapper {
         return available;
     }
 
-    public void update(DomainEntity domainEntity){
+    public final void update(DomainEntity domainEntity){
         try {
             ps = connection.prepareStatement(updateStatement());
             doUpdateInsert(domainEntity, ps);
@@ -113,7 +113,7 @@ public abstract class DataMapper {
         }
     }
 
-    public void delete(int id){
+    public final void delete(int id){
         try {
             ps = connection.prepareStatement(deleteStatement());
             ps.setInt(1, id);
