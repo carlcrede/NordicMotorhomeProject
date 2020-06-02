@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class PasswordEncoder {
+public final class PasswordEncoder {
 
     private static MessageDigest messageDigest;
 

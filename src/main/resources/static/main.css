@@ -70,7 +70,7 @@ h1 {
 
 /* Add a red background color to navigation links on hover */
 .navbar a:hover, .subnav:hover .subnavbtn {
-    background-color: red;
+    background-color: #85ae1b;
 }
 
 /* Style the subnav content - positioned absolute */
@@ -79,21 +79,21 @@ h1 {
     position: absolute;
     /*left: 8px;*/
     /*right: 8px;*/
-    background-color: #ebe8d7;
+    background-color: #663333;
     z-index: 1;
 }
 
 /* Style the subnav links */
 .subnav-content a {
     float: left;
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 /* Add a grey background color on hover */
 .subnav-content a:hover {
-    background-color: #eee;
-    color: black;
+    background-color: #86af1c;
+    /*     color: black; */
 }
 
 /* When you move the mouse over the subnav container, open the subnav content */
@@ -137,17 +137,17 @@ input[type=text], input[type=password] {
 }
 
 anm_btn{
-     background-color: #4CAF50;
-     border: none;
-     color: white;
-     padding: 15px 32px;
-     text-align: center;
-     text-decoration: none;
-     display: inline-block;
-     font-size: 16px;
-     margin: 4px 2px;
-     cursor: pointer;
- }
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 cncl_btn{
     background-color: #FF0000;
