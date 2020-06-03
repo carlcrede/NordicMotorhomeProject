@@ -89,41 +89,4 @@ public class OrderController {
         return "redirect:/order";
     }
 
-//
-//    @GetMapping("/order/createOrder")
-//    public String createOrder(Model model, @RequestParam("id") int customerId){
-//        model.addAttribute("order", new Order(customerId));
-//        return "/order/createOrder";
-//    }
-//
-//    @PostMapping("/order/createOrder")
-//    public String createOrder(HttpServletRequest request){
-//        String customerId = request.getParameter("customerId");
-//        String startDate = request.getParameter("startDate");
-//        String returnDate = request.getParameter("returnDate");
-//        String status = request.getParameter("status");
-//        Order order = new Order(Integer.parseInt(customerId), startDate, returnDate, status);
-//        controller.create(order);
-//        return "redirect:/order/productselection";
-//    }
-//
-//    @GetMapping("/order/productselection")
-//    public String productselection(Model model){
-//        model.addAttribute("orderlines", new ArrayList<OrderLine>());
-//        model.addAttribute("motorhomes", motorhomeController.readAvailable());
-//        return "/order/productselection";
-//    }
-
-//    @PostMapping("/order/productselection/")
-//    public String productselection(HttpServletRequest request){
-//        request.getParameterMap("productId", quantity);
-//    }
-//
-////    @GetMapping("/order/delete")
-////    public String deleteOrder(Model model, @RequestParam("id") int id){
-////        model.addAttribute(orderController.read(id));
-////        return "/order/delete";
-////    }
-
-
 }
