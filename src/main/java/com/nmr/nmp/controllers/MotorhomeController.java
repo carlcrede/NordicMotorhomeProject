@@ -1,4 +1,4 @@
-package com.nmr.nmp.controller;
+package com.nmr.nmp.controllers;
 
 import com.nmr.nmp.data.implementations.DataFacadeImpl;
 import com.nmr.nmp.data.mappers.MotorhomeMapper;

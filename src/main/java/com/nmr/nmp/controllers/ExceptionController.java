@@ -1,4 +1,4 @@
-package com.nmr.nmp.controller;
+package com.nmr.nmp.controllers;
 
 import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;
