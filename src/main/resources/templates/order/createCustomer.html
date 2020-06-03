@@ -15,7 +15,8 @@
         <p>Last name: <input type="text" th:field="*{lastname}" required/></p>
         <p>Phone: <input type="text" th:field="*{phone}" required/></p>
         <p>Email: <input type="text" th:field="*{email}" required/></p>
-        <input type="submit" value="Add" align="right" th:href="@{/order/createOrder(id=${customer.id})}" />
+        <button type="reset" onclick="window.location.href='/order/pickcustomer'" align="left" style="width: 25%; background-color: #FF0000">Cancel</button>
+        <button type="submit" value="Add" align="right" style="width: 25%; margin-left: 49.5%;" th:href="@{/order/createOrder(id=${customer.id})}">Add</button>
         <br/><br/>
     </form>
 </div>

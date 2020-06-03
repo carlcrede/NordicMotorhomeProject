@@ -10,7 +10,7 @@
 <div th:insert="navbar"></div>
 <div class="container">
     <h1>Delete motorhome "<span
-            th:text="${motorhome.id + ': ' + motorhome.type + ' ' + motorhome.brand + ' ' + motorhome.model}">"?</span>?
+        th:text="${motorhome.id + ': ' + motorhome.type + ' ' + motorhome.brand + ' ' + motorhome.model}">"?</span>?
     </h1>
     <form action="#" th:action="@{/motorhome/delete}" method="post">
         <input type="hidden" th:field="${motorhome.id}">

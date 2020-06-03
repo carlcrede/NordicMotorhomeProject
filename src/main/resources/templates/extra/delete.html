@@ -10,7 +10,7 @@
 <div th:insert="navbar"></div>
 <div class="container">
     <h1>Delete Extra "<span
-            th:text="${extra.id + ': ' + extra.type + ' ' + extra.brand + ' ' + extra.model + ' ' + extra.stock}">"?</span>?
+        th:text="${extra.id + ': ' + extra.type + ' ' + extra.brand + ' ' + extra.model + ' ' + extra.stock}">"?</span>?
     </h1>
     <form action="#" th:action="@{/extra/delete}" method="post">
         <input type="hidden" th:field="${extra.id}">

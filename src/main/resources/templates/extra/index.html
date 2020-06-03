@@ -16,7 +16,6 @@
     <table>
         <thead>
         <tr>
-            <!--        <th>Id</th>-->
             <th>ID</th>
             <th>Type</th>
             <th>Brand</th>
@@ -28,8 +27,6 @@
         </thead>
         <tbody>
         <tr th:each="extra: ${extras}">
-            <!--/*@thymesVar id="studentId" type=""*/-->
-            <!--        <td th:text="${student.studentId}"></td>-->
             <td th:text="${extra.id}"></td>
             <td th:text="${extra.type}"></td>
             <td th:text="${extra.brand}"></td>
@@ -37,7 +34,6 @@
             <td th:text="${extra.price}"></td>
             <td th:text="${extra.stock}"></td>
             <td>
-<!--                <a th:href="@{/extra/details(id=${extra.id})}" class="btn btn-detail">Details <i class="fa fa-search-plus"></i></a> &lt;!&ndash; http://www.thymeleaf.org/doc/articles/standardurlsyntax.html &ndash;&gt;-->
                 <a th:href="@{/extra/edit(id=${extra.id})}" class="btn btn-ed">Update <i class="fa fa-edit"></i></a>
                 <a th:href="@{/extra/delete(id=${extra.id})}" class="btn btn-del">Delete <i class="fa fa-trash-o"></i></a>
             </td>

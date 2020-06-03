@@ -9,7 +9,6 @@
 <body>
 
 <div th:insert="navbar.html"></div>
-
 <div th:if="${session.user.role == 'owner'}">
     <h1>Welcome <span th:text="${session.user.firstName + ' ' + session.user.lastName }"></span>!</h1>
     <div th:action="@{/motorhome}"></div>
@@ -19,8 +18,6 @@
 </div>
 <div th:if="${session.user.role == 'mechanic'}"></div>
 <div th:if="${session.user.role == 'book'}"></div>
-
-
 </body>
 <footer th:insert="footer"></footer>
 </html>
