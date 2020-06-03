@@ -3,7 +3,6 @@ package com.nmr.nmp.domain;
 import com.nmr.nmp.domain.models.DomainEntity;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public interface IDataFacade {
     void create(DomainEntity domainEntity);

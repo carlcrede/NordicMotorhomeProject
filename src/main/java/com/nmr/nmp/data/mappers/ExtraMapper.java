@@ -2,12 +2,10 @@ package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.domain.models.DomainEntity;
 import com.nmr.nmp.domain.models.Extra;
-import com.nmr.nmp.domain.models.Motorhome;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class ExtraMapper extends DataMapper{
 

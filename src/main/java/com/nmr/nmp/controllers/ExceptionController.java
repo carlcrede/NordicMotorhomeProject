@@ -20,4 +20,5 @@ public class ExceptionController {
         model.addAttribute("exception", exception);
         return "/error/index";
     }
+
 }
