@@ -1,5 +1,6 @@
-package com.nmr.nmp.domain;
+/* Author: Carl Christian Hasselbalch */
 
+package com.nmr.nmp.domain;
 
 import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;

@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbalch */
+
 package com.nmr.nmp.controllers;
 
 import com.nmr.nmp.domain.exceptions.DatabaseException;

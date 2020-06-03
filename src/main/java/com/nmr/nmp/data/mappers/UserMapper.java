@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbalch, Jannick Lücking Espersen */
+
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.data.DBManager;

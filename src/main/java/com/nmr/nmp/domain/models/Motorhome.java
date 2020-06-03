@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbalch */
+
 package com.nmr.nmp.domain.models;
 
 public class Motorhome extends DomainEntity{

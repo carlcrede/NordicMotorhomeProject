@@ -1,3 +1,5 @@
+/* Author: Peter Helle Hartmann, Philip Bretlau Specht */
+
 package com.nmr.nmp.controllers;
 
 import com.nmr.nmp.data.implementations.DataFacadeImpl;

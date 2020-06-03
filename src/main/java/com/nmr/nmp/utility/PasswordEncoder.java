@@ -1,3 +1,5 @@
+/* Author: Philip Bretlau Specht, Carl Christian Hasselbalch */
+
 package com.nmr.nmp.utility;
 
 import java.nio.charset.StandardCharsets;

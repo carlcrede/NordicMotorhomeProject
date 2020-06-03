@@ -1,3 +1,5 @@
+/* Author: Jannick Lücking Espersen */
+
 package com.nmr.nmp.domain.models;
 
 public class Orderline extends DomainEntity{

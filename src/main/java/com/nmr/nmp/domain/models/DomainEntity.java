@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbalch, Peter Helle Hartmann */
+
 package com.nmr.nmp.domain.models;
 
 public class DomainEntity {

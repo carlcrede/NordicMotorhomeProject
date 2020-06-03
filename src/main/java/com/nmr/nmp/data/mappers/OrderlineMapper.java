@@ -1,3 +1,5 @@
+/* Author: Peter Helle Hartmann */
+
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.domain.models.DomainEntity;

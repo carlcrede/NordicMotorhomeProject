@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbalch */
+
 package com.nmr.nmp.data.implementations;
 
 import com.nmr.nmp.data.mappers.DataMapper;

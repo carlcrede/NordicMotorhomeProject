@@ -1,3 +1,5 @@
+/* Author: Peter Helle Hartmann, Philip Bretlau Specht */
+
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.domain.models.*;

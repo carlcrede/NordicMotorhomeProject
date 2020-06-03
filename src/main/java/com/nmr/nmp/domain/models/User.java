@@ -1,3 +1,5 @@
+/* Author: Philip Bretlau Specht */
+
 package com.nmr.nmp.domain.models;
 
 public class User {

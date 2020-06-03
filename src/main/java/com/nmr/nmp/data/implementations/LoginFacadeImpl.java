@@ -1,3 +1,5 @@
+/* Author: Philip Bretlau Specht */
+
 package com.nmr.nmp.data.implementations;
 
 import com.nmr.nmp.data.mappers.UserMapper;

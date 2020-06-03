@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbach, Philip Bretlau Specht */
+
 package com.nmr.nmp.domain.models;
 
 public class Customer extends DomainEntity{

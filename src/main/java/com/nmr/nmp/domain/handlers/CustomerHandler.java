@@ -1,3 +1,5 @@
+/* Author: Philip Bretlau, Jannick Lücking Espersen */
+
 package com.nmr.nmp.domain.handlers;
 
 import com.nmr.nmp.domain.IDataFacade;

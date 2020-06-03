@@ -1,3 +1,5 @@
+/* Author: Carl Christian Hasselbalch */
+
 package com.nmr.nmp.domain.exceptions;
 
 import java.sql.SQLException;

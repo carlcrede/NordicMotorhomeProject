@@ -1,9 +1,9 @@
+/* Author: Peter Helle Hartmann */
+
 package com.nmr.nmp.domain.models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Order extends DomainEntity {
 

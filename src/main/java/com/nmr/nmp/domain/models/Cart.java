@@ -1,3 +1,5 @@
+/* Author: Peter Helle Hartmann */
+
 package com.nmr.nmp.domain.models;
 
 import java.util.ArrayList;

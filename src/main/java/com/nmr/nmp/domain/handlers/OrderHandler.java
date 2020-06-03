@@ -1,3 +1,5 @@
+/* Author: Peter Helle Hartmann */
+
 package com.nmr.nmp.domain.handlers;
 
 import com.nmr.nmp.domain.IDataFacade;

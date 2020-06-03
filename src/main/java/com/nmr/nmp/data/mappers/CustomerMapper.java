@@ -1,3 +1,5 @@
+/* Author: Jannick Lücking Espersen, Carl Christian Hasselbalch */
+
 package com.nmr.nmp.data.mappers;
 
 import com.nmr.nmp.domain.models.Customer;

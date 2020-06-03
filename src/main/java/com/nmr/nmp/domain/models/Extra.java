@@ -1,3 +1,5 @@
+/* Author: Philip Bretlau Specht, Jannick Lücking Espersen */
+
 package com.nmr.nmp.domain.models;
 
 public class Extra extends DomainEntity{
