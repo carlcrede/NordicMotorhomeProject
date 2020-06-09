@@ -4,12 +4,14 @@ package com.nmr.nmp.controllers;
 
 import com.nmr.nmp.domain.exceptions.DatabaseException;
 import com.nmr.nmp.domain.exceptions.LoginException;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ExceptionController {
+public class ExceptionController implements ErrorController {
 
     @ExceptionHandler(LoginException.class)
     public String loginError(Model model, Exception exception) {
@@ -23,4 +25,13 @@ public class ExceptionController {
         return "/error/index";
     }
 
+    @GetMapping("/error")
+    public String handleError() {
+        return "error/index";
+    }
+
+    @Override
+    public String getErrorPath() {
+        return "/error";
+    }
 }

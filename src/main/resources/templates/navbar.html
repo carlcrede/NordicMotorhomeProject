@@ -5,7 +5,6 @@
             <img src="" th:src="@{/images/Mountain.png}" alt="Logo">
         </a>
         <a href="/">Home</a>
-        <!-- TODO: find evt. en anden måde til at vise ren "rigtige" navbar - spørg Tine / Kris -->
         <div th:if="${session.user.role == 'owner'}">
             <div class="subnav">
                 <button class="subnavbtn">Manage <i class="fa fa-caret-down"></i></button>
@@ -22,8 +21,6 @@
             <div class="subnav-content">
                 <a href="/order">All Rentals</a>
                 <a href="/order/new">New Rental</a>
-                <a href="#link3">All Reservation (Under Construction)</a>
-                <a href="#link3">All Reservation (Under Construction)</a>
             </div>
         </div>
     </div>
@@ -38,7 +35,6 @@
             </div>
         </div>
         </div>
-        <div th:if="${session.user.role == 'owner' or session.user.role == 'cleaning'}">
         <div class="subnav">
             <button class="subnavbtn">About <i class="fa fa-caret-down"></i></button>
             <div class="subnav-content">
@@ -47,8 +43,6 @@
                 <a href="#careers">Contact info (Under Construction)</a>
             </div>
         </div>
-        </div>
         <a href="/logout">Log out <i class="fa fa-sign-out"></i></a>
-        <!--        <a href="#contact">Contact</a>-->
     </div>
 </div>
