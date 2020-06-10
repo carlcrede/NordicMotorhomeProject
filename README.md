@@ -41,30 +41,26 @@ Al data gemmes på en MySQL database som er hostet via GearHost.
 
 ## Guide til opsætning med GitHub og GearHost-database
 
-Softwarekrav:
+**Softwarekrav:**
 
 Et integreret udviklingsmiljø (IDE) som understøtter Maven projekter. F.eks. IntelliJ IDEA.
 
-Internet:
+**Internet:**
 
 Der kræves en internetforbindelse for at kunne forbinde til databasen.
 
-Importering af projekt fra GitHub
+**Importering af projekt fra GitHub**
 
-![](RackMultipart20200609-4-qm75z8_html_819a09e7b0996be7.png)
 
 1. Før musen over &quot;Clone or download&quot; og vælg &quot;Download ZIP&quot;. Gem filen et sted på din PC, og pak den herefter ud i en mappe.
 2. Åbn din IDE og importer projektet som Maven projekt. Herunder ses hvordan det gøres i IntelliJ IDEA.
 
-![](RackMultipart20200609-4-qm75z8_html_e9c1b3a27216a091.png)
 
 1. Vælg &quot;Import project&quot;
 
-![](RackMultipart20200609-4-qm75z8_html_4a47a1445399470e.png)
 
 1. Find og marker mappen med  projektet og vælg &quot;OK&quot;.
 
-![](RackMultipart20200609-4-qm75z8_html_23147e7a2f3717b1.png)
 
 1. Markér &quot;Import project from external model&quot;, vælg så &quot;Maven&quot; i listen og vælg til sidst &quot;FINISH&quot;.
 
@@ -74,7 +70,7 @@ Importering af projekt fra GitHub
 
 1. Log ind med brugernavn og password fra skemaet herunder.
 
-Login
+**Login**
 
 I systemet er det implementeret et login systemet inden man får adgang til resten systemets funktionaliteter. Når man logger ind som &quot;ejer&quot; har man fuld adgang til alle funktionaliteter i systemet. Der kan logges ind som forskellige typer af medarbejdere. Se skemaet nedenfor.
 
@@ -88,7 +84,7 @@ Bemærk forskel på store og små bogstaver i password.
 
 De resterende typer af medarbejdere har ikke noget login endnu, da der ikke er implementeret funktionalitet til dem.
 
-Guide til opsætning med lokal database
+## Guide til opsætning med lokal database
 
 Såfremt man ønsker at bruge en lokal database, eller hvis GearHost databasen ikke virker skal denne guide følges.
 
