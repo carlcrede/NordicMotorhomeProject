@@ -51,24 +51,28 @@ Der kræves en internetforbindelse for at kunne forbinde til databasen.
 
 **Importering af projekt fra GitHub**
 
-![Step 1](https://github.com/carlcrede/NordicMotorhomeProject/tree/master/docs/images/step1.png)
+![Step 1](docs/images/step1.png "Download af projekt")
 1. Før musen over &quot;Clone or download&quot; og vælg &quot;Download ZIP&quot;. Gem filen et sted på din PC, og pak den herefter ud i en mappe.
 2. Åbn din IDE og importer projektet som Maven projekt. Herunder ses hvordan det gøres i IntelliJ IDEA.
 
+![Step 2 og 3](docs/images/step2plus3.png "Importering af projekt til IntelliJ")
 
-1. Vælg &quot;Import project&quot;
+3. Vælg &quot;Import project&quot;
 
+![Step 4](docs/images/step4.png "Find og marker projekt")
 
-1. Find og marker mappen med  projektet og vælg &quot;OK&quot;.
+4. Find og marker mappen med  projektet og vælg &quot;OK&quot;.
 
+![Step 5](docs/images/step5.png "Immporter som Maven projekt")
 
-1. Markér &quot;Import project from external model&quot;, vælg så &quot;Maven&quot; i listen og vælg til sidst &quot;FINISH&quot;.
+5. Markér &quot;Import project from external model&quot;, vælg så &quot;Maven&quot; i listen og vælg til sidst &quot;FINISH&quot;.
 
-1. Nu kan programmet køres ved at trykke på &quot;Run&quot; knappen, vælge &quot;Run&quot; under Run-fanen eller ved at trykke SHIFT+F10.
+6. Nu kan programmet køres ved at trykke på &quot;Run&quot; knappen, vælge &quot;Run&quot; under Run-fanen eller ved at trykke SHIFT+F10.
 
-1. Åben nu din browser og gå til &quot;localhost:8080&quot;.
+7. Åben nu din browser og gå til &quot;localhost:8080&quot;.
 
-1. Log ind med brugernavn og password fra skemaet herunder.
+8. Log ind med brugernavn og password fra skemaet herunder.
+
 
 **Login**
 
