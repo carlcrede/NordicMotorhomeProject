@@ -2,16 +2,16 @@
 
 Eksamensprojekt for Datamatiker førsteårseksamen på KEA 2020.
 
-Projektdeltagere:
+**Projektdeltagere:**
 
 Christian Hasselbalch, Jannick Espersen, Philip Specht &amp; Peter Hartmann
 
 
-**Projektbeskrivelse**
+### Projektbeskrivelse
 
 Dette projekt er en eksamensopgave, hvor vi havde til opgave at levere første version af et administrativt system til en fiktiv virksomhed &quot;Nordic Motorhome Rentals&quot;. Det er en virksomhed hvis forretning består i at udleje autocampere.
 
-**Produktkrav**
+### Produktkrav
 
 ***Teknisk***
 - Program skrevet i Java.
@@ -26,7 +26,7 @@ Dette projekt er en eksamensopgave, hvor vi havde til opgave at levere første v
 
 
 
-**Systembeskrivelse**
+### Systembeskrivelse
 
 I denne første udgave af systemet &#39;Nordic Motorhome Project&#39; (nmp) er der implementeret følgende.
 
@@ -74,7 +74,7 @@ Der kræves en internetforbindelse for at kunne forbinde til databasen.
 8. Log ind med brugernavn og password fra skemaet herunder.
 
 
-**Login**
+### Login
 
 I systemet er det implementeret et login systemet inden man får adgang til resten systemets funktionaliteter. Når man logger ind som &quot;ejer&quot; har man fuld adgang til alle funktionaliteter i systemet. Der kan logges ind som forskellige typer af medarbejdere. Se skemaet nedenfor.
 
