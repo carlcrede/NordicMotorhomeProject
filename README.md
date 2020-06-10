@@ -51,7 +51,7 @@ Der kræves en internetforbindelse for at kunne forbinde til databasen.
 
 **Importering af projekt fra GitHub**
 
-
+![Step 1](https://github.com/carlcrede/NordicMotorhomeProject/tree/master/docs/images/step1.png)
 1. Før musen over &quot;Clone or download&quot; og vælg &quot;Download ZIP&quot;. Gem filen et sted på din PC, og pak den herefter ud i en mappe.
 2. Åbn din IDE og importer projektet som Maven projekt. Herunder ses hvordan det gøres i IntelliJ IDEA.
 
