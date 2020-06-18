@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class ExceptionController implements ErrorController {
 
@@ -26,7 +28,9 @@ public class ExceptionController implements ErrorController {
     }
 
     @GetMapping("/error")
-    public String handleError() {
+    public String handleError(HttpServletRequest request, Model model) {
+        Integer status_code = (Integer) request.getAttribute("javax.servlet.error.status_code");
+        model.addAttribute("status_code", status_code);
         return "error/index";
     }
 

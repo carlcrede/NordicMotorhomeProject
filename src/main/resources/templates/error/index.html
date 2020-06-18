@@ -12,9 +12,8 @@
     <h1>An error has occured</h1>
     <p>Contact system admin if error persists.</p>
     <anm_btn><a href="/">Go back</a></anm_btn>
-    <h2 th:text="${exception.message}" th:unless="${exception.message == null}"></h2>
-    <h2>Reason: (please report reason to system admin)</h2>
-    <p th:text="${exception.reason}" th:unless="${exception.reason == null}"></p>
+    <h2>Error status code:</h2>
+    <p th:text="${status_code}"></p>
 </div>
 </body>
 </html>
